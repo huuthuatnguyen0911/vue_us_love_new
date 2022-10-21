@@ -1,0 +1,372 @@
+#AnimalView {
+  @include WidthHeight(100%, 100vh);
+  // background-image: url("https://res.cloudinary.com/dd1yamek1/image/upload/v1659426243/bwd_love_us/anh_rung_poj4m1.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .drak_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .InnerMainContent {
+    position: absolute;
+    @include WidthHeight(100%, 100%);
+    z-index: 222;
+
+    // .boxMainContent {
+    //   @include WidthHeight(100%, 100%);
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   justify-content: center;
+    // }
+
+    .boxFindAnimalMain {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 222;
+
+      .boxSearch {
+        display: flex;
+        align-items: center;
+        width: 250px;
+        padding: 12px 16px;
+        background-color: rgba(255, 255, 255, 0.3);
+        @include BorderRadius(12px);
+
+        .ic-search {
+          @include WidthHeight(22px, auto);
+          color: #fff;
+          margin-right: 20px;
+        }
+
+        .inputSearch {
+          background: none;
+          border: none;
+          outline: none;
+          color: #fff;
+          flex: 1;
+          &::placeholder {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .boxImageMainAnimal {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      right: 40px;
+      z-index: 222;
+
+      .mainImage {
+        @include WidthHeight(600px, 400px);
+        @include ObjectFit(contain);
+        filter: drop-shadow(-10px 4px 4px rgba(255, 255, 255, 0.25));
+      }
+    }
+    @include MaxWidth($width-tablet) {
+      .mainImage {
+        @include WidthHeight(200px !important, 400px);
+      }
+      .mainNameAnimal {
+        font-size: 3.375em !important;
+      }
+    }
+  }
+}
+
+#AnimalDetailBottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 940px;
+
+  .boxInnerContent {
+    padding: 25px 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+
+    .boxContentLeft {
+      margin-right: 70px;
+
+      .listInfoCounter {
+        display: flex;
+        align-items: center;
+
+        .itemInfo {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 0 20px;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            @include WidthHeight(3px, 60%);
+            border-radius: 46px;
+            background-color: rgba(255, 255, 255, 0.2);
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &:last-child {
+            padding-right: 0;
+            &::before {
+              background-color: transparent;
+            }
+          }
+
+          .number {
+            color: #2bfd08;
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 10px;
+          }
+          .name {
+            color: rgba(255, 255, 255, 0.8);
+          }
+        }
+      }
+    }
+
+    .boxContentRight {
+      .textInfoAnimal {
+        color: rgba(255, 255, 255, 0.6);
+        @include FontSize(16);
+        font-weight: bold;
+        margin-bottom: 10px;
+        line-height: 1.3;
+
+        .content {
+          color: #fff;
+
+          &.green {
+            color: #2bfd08;
+          }
+        }
+      }
+    }
+  }
+  @include MaxWidth($width-tablet) {
+    .boxInnerContent {
+      width: fit-content;
+      transform: translateX(18%);
+    }
+  }
+}
+
+#AnimalDetailMainInfo {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 40px;
+  z-index: 222;
+
+  .boxMainContentInner {
+    display: flex;
+    align-items: center;
+    .boxLeftMain {
+      margin-right: 100px;
+
+      .listHandleSlide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .btnHandleItem {
+          &.btnPrev {
+            margin-bottom: 10px;
+          }
+
+          &.btnNext {
+            margin-top: 10px;
+          }
+
+          .ic_handle {
+            color: #fff;
+            @include FontSize(26);
+            transition: all 0.2s linear;
+            cursor: pointer;
+
+            &:hover {
+              color: #2bfd08;
+            }
+          }
+        }
+
+        .itemDot {
+          margin: 5px 0;
+          // &:last-child {
+          //   margin-bottom: 0;
+          // }
+
+          &.active {
+            .ic_dot {
+              color: #2bfd08;
+              box-shadow: 0 0 10px rgba($color: #2bfd08, $alpha: 0.2);
+            }
+          }
+
+          .ic_dot {
+            @include FontSize(14);
+            color: rgba(206, 206, 206, 0.6);
+            transition: all 0.2s linear;
+          }
+        }
+      }
+    }
+    .boxRightMain {
+      #AnimalDetailSlideMain {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 500px;
+
+        .mainNameAnimal {
+          color: #fff;
+          text-transform: uppercase;
+          font-weight: bold;
+          @include FontSize(60);
+          margin-bottom: 40px;
+        }
+
+        .subContent {
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 600;
+          @include FontSize(16);
+          line-height: 1.3;
+          margin-bottom: 30px;
+        }
+        @include MaxWidth($width-tablet) {
+          .subContent {
+            width: 400px !important;
+            @include FontSize(16);
+          }
+        }
+
+        .btnRead {
+          @include WidthHeight(120px, 40px);
+          background: none;
+          border: 2px solid #2bfd08;
+          color: #fff;
+          transition: all 0.2s linear;
+          font-weight: 600;
+          border-radius: 46px;
+
+          &:hover {
+            background-color: #2bfd08;
+            color: #333;
+          }
+        }
+      }
+
+      #AnimalDetailFormInfo {
+        .boxInnerContent {
+          padding: 20px;
+          background-color: $bg-main-30;
+          width: 400px;
+          @include BorderRadius(16px);
+          .textInfoAnimal {
+            color: rgba($color: #fff, $alpha: 0.6);
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            .titleInfo {
+              color: rgba($color: #fff, $alpha: 1);
+            }
+          }
+        }
+      }
+
+      #boxAnimalDetailImage {
+        .boxConnentMainInner {
+          width: 600px;
+
+          .row {
+            .col-md-4 {
+              margin: 10px 0;
+            }
+          }
+
+          .boxImageInner {
+            @include WidthHeight(100%, 120px);
+            img {
+              @include WidthHeight(100%, 100%);
+              @include ObjectFit(cover);
+              @include BorderRadius(12px);
+              border: 3px solid $green-main;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.popupShowInfo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  @include WidthHeight(100%, 100%);
+  z-index: 999;
+  background-color: rgba($color: #333, $alpha: 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .boxInnerPopup {
+    padding: 30px 20px;
+    background-color: #546166;
+    @include BorderRadius(16px);
+    width: 800px;
+
+    .nameAnimal {
+      @include FontSize(30);
+      color: $green-main;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 0 60px;
+      position: relative;
+      margin-bottom: 20px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 3px;
+        @include BorderRadius(46px);
+        background-color: $green-main;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .contentBox {
+      font-weight: 500;
+      color: rgba($color: #fff, $alpha: 1);
+      line-height: 1.4;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  }
+}

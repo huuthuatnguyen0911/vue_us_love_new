@@ -1,0 +1,39 @@
+.MyBlogs {
+  margin-top: 50px;
+  color: white;
+  .boxTab {
+    text-align: center;
+    margin-bottom: 40px;
+    .listTap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .itemTab {
+        padding: 12px 24px;
+        background-color: $white-admin;
+        @include FontSize(16px);
+        font-weight: 600;
+        @include BorderRadius(46px);
+        margin: 0 12px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        &:hover {
+          background-color: rgba(66, 198, 54, 0.3);
+          color: $green-main;
+        }
+
+        &.active {
+          background-color: $green-main;
+          color: white;
+        }
+      }
+    }
+  }
+}

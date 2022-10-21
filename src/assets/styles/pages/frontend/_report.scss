@@ -1,0 +1,110 @@
+#reportView {
+  .sc__reportProcess {
+    #ReportProcess {
+      .mapProcessReport {
+        @include WidthHeight(100%, auto);
+        img {
+          @include WidthHeight(100%, auto);
+          @include ObjectFit(contain);
+        }
+      }
+    }
+  }
+
+  .sc__formReport {
+    .ReportForm {
+      margin-top: 80px;
+      @include BorderRadius(16px);
+      box-shadow: 0 0 10px 10px rgba($color: #333, $alpha: 0.05);
+      .titleForm {
+        text-align: center;
+        @include FontSize(22);
+        font-weight: bold;
+        margin-bottom: 24px;
+        color: #42c636;
+        line-height: 1.4;
+      }
+
+      .customRow {
+        display: flex;
+        @include WidthHeight(100%, 100%);
+        // align-items: flex-start;
+        .customCol {
+          padding: 50px 30px 30px;
+        }
+
+        .leftInner {
+          max-width: 50%;
+          @include WidthHeight(100%, auto);
+          border-radius: 16px 0 0 16px;
+          .itemInfor {
+            display: flex;
+            @include FontSize(16);
+            margin-bottom: 12px;
+            .title {
+              @include FontSize(16);
+              white-space: nowrap;
+              font-weight: bold;
+            }
+            .content {
+              margin-left: 6px;
+              line-height: 1.4;
+              font-weight: 500;
+              opacity: 0.8;
+            }
+          }
+        }
+        .rightInner {
+          max-width: 50%;
+          @include WidthHeight(100%, auto);
+          background-color: #fff;
+          border-radius: 0 16px 16px 0;
+          .boxShowSuccess {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .icCheckSuccess {
+              text-align: center;
+              @include WidthHeight(70px, 70px);
+              color: #42c636;
+              margin-bottom: 16px;
+            }
+            .textSuccess {
+              text-align: center;
+              @include FontSize(16);
+              font-weight: 700;
+              line-height: 1.4;
+              margin-bottom: 16px;
+            }
+
+            .btnReturnReport {
+              @include BorderRadius(46px);
+              @include WidthHeight(auto, 38px);
+              background: none;
+              color: #333;
+              padding: 0 20px;
+              border: 2px solid #42c636;
+              transition: all 0.2s linear;
+              &:hover {
+                background-color: #42c636;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+      @include MaxWidth($width-tablet){
+        .customRow{
+          display: block;
+        }
+        .leftInner{
+          max-width: 100% !important;
+        }
+        .rightInner{
+          max-width: 100% !important;
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,109 @@
+#right__default {
+  // @include WidthHeight(100%, 100%);
+  // // dis
+  overflow-y: auto;
+  // position: absolute;
+  width: $width-right;
+
+  .box__custom__right {
+    padding: 20px 20px 30px;
+    @include BorderRadius(16px);
+    background-color: $bg-main-30;
+  }
+
+  .box__earth {
+    background-image: url("@/assets/images/background/bg_earth.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: auto;
+    display: flex;
+    flex-direction: column;
+
+    .image__earth {
+      @include WidthHeight(220px, 220px);
+      object-fit: cover;
+      align-self: center;
+    }
+
+    .item__text {
+      color: $mine-shaft;
+
+      .title {
+        font-weight: 600;
+        @include FontSize(18);
+        margin-bottom: 16px;
+      }
+
+      .content {
+        color: $mine-shaft-40;
+        font-style: italic;
+        @include FontSize(14);
+        line-height: 20px;
+      }
+    }
+  }
+
+  .box__group {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    color: $mine-shaft;
+
+    .title__group {
+      margin-bottom: 20px;
+      font-weight: 700;
+      @include FontSize(18);
+    }
+
+    .list__group {
+      .item__group {
+        padding: 4px 16px;
+        @include BorderRadius(16px);
+        transition: all 0.2s linear;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.6);
+
+          .item__link {
+            .name__group {
+              opacity: 1;
+            }
+          }
+        }
+
+        .item__link {
+          display: flex;
+          align-items: center;
+          color: $mine-shaft;
+          // justify-content: space-between;
+
+          .img__group {
+            @include WidthHeight(48px, 48px);
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .name__group {
+            font-weight: 500;
+            @include FontSize(15);
+            margin-left: 10px;
+            color: rgba(51, 51, 51);
+            opacity: 0.6;
+            transition: all 0.2s linear;
+          }
+
+          // .box__dots {
+          //     .icon__group {
+          //         @include FontSize(20);
+          //     }
+          // }
+        }
+      }
+    }
+
+    .show_text_group {
+      @include FontSize(14);
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+.boxMainInfor {
+  max-width: 100%;
+  margin-top: 30px;
+
+  .innerInfor {
+    width: 70%;
+    margin: 0 auto;
+    background-color: $bg-main-30;
+    // background-color: #fff;
+    @include BorderRadius(16px);
+    padding: 24px;
+
+    .titleInfor {
+      padding-left: 50px;
+      position: relative;
+      @include FontSize(18);
+      font-weight: bold;
+      margin-bottom: 20px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 3px;
+        width: 34px;
+        background-color: #333;
+      }
+    }
+
+    .formInforMe {
+      margin-bottom: 20px   ;
+
+      .formGroupMain {
+        margin: 20px 0;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .box__form__error {
+          margin-left: 22px;
+
+          &.error {
+            .list__error {
+              list-style: circle;
+
+              .error-msg {
+                color: red;
+                @include FontSize(14);
+              }
+            }
+          }
+        }
+      }
+
+      .form__input__group {
+        display: flex;
+        align-items: center;
+        // background-color: #edf4fb;
+        background-color: #fff;
+        padding: 10px 30px;
+        @include BorderRadius(8px);
+        color: rgba(51, 51, 51, 0.7);
+        margin: 20px 0;
+        width: 100%;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .icon_input {
+          @include FontSize(24);
+        }
+
+        .input__infor {
+          padding-left: 10px;
+          border: none;
+          background: none;
+          outline: none;
+          color: rgba(51, 51, 51, 0.7);
+          width: 100%;
+
+          &::placeholder {
+            color: rgba(51, 51, 51, 0.7);
+            font-weight: 500;
+            font-style: italic;
+          }
+        }
+      } 
+    }
+  }
+  @include MaxWidth($width-tablet){
+    .innerInfor{
+      width: 100%;
+    }
+  }
+}

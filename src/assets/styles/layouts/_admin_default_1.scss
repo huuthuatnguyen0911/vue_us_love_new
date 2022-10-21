@@ -1,0 +1,286 @@
+#AdminDefault {
+  background-color: $black-admin;
+  @include WidthHeight(100%, 100vh);
+  overflow: auto;
+  color: #fff;
+  .sc_adminHeader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    top: 0;
+    background-color: rgba(23, 24, 33);
+    .AdminHeader {
+      padding: 26px 32px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .boxHeaderlogo {
+        width: $width-left;
+
+        .logo__link {
+          display: flex;
+          align-items: center;
+
+          .logo__image {
+            @include ObjectFit(cover);
+            @include WidthHeight(38px, 38px);
+          }
+
+          .logo__text {
+            margin-left: 10px;
+            color: $white;
+            @include FontSize(22);
+
+            &--emphasize {
+              @include FontSize(22);
+              color: $green-main;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .boxRightHeader {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .textHello {
+          @include FontSize(18);
+          font-weight: 600;
+        }
+        .boxInforRight {
+          .listItemBox {
+            display: flex;
+            align-items: center;
+            .itemBox {
+              margin: 0 20px;
+              &:first-child {
+                margin-left: 0;
+              }
+              &:last-child {
+                margin-right: 0;
+              }
+
+              .box__bell {
+                position: relative;
+
+                .icon__bell__item {
+                  color: $white;
+                  @include WidthHeight(22px, 22px);
+                }
+
+                .count__notification {
+                  position: absolute;
+                  color: $white;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  top: -3px;
+                  right: -6px;
+                  z-index: 2;
+                  font-size: 14px;
+
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    @include WidthHeight(18px, 18px);
+                    border-radius: 50%;
+                    background: $red;
+                    z-index: -1;
+                    top: 48%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  }
+                }
+              }
+
+              .box__multi__language {
+                position: relative;
+
+                &::after {
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 20px;
+                  background-color: transparent;
+                  bottom: -19px;
+                  right: 0;
+                }
+
+                .current__language {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  color: $white;
+                  cursor: pointer;
+
+                  .icon__flag {
+                    @include WidthHeight(22px, 22px);
+                    object-fit: cover;
+                    margin-right: 5px;
+                    border-radius: 50%;
+                  }
+
+                  .text__country {
+                    @include FontSize(15);
+                  }
+
+                  .icon__arrow__down {
+                    margin-left: 5px;
+                    @include FontSize(16);
+                  }
+                }
+
+                .list__language {
+                  position: absolute;
+                  // background-color: rgba(232 232 232);
+                  background-color: $white-admin;
+                  color: #fff;
+                  padding: 10px 0;
+                  border-radius: 16px;
+                  right: 0;
+                  top: 140%;
+                  z-index: 2;
+                  box-shadow: 0 0 40px 4px rgba(51, 51, 51, 0.2);
+
+                  .item__language {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    color: $white;
+                    opacity: 0.5;
+                    margin: 0 10px;
+                    padding: 10px 14px;
+                    border-radius: 16px;
+                    transition: all 0.2s linear;
+
+                    &:hover {
+                      cursor: pointer;
+                      opacity: 0.9;
+                      background-color: rgba(211, 211, 211, 0.5);
+                    }
+
+                    .icon__flag {
+                      @include WidthHeight(20px, 20px);
+                      object-fit: cover;
+                      margin-right: 5px;
+                      border-radius: 50%;
+                    }
+
+                    .text__country {
+                      margin-left: 10px;
+                      @include FontSize(16);
+                      white-space: nowrap;
+                    }
+                  }
+                }
+              }
+
+              .box__person {
+                .text__person__name {
+                  @include FontSize(16);
+                  font-weight: 600;
+                  margin-right: 10px;
+                }
+
+                .img__person {
+                  @include WidthHeight(24px, 24px);
+                  object-fit: cover;
+                  border-radius: 50%;
+                }
+
+                .box__show_auth {
+                  .link_auth {
+                    font-weight: 600;
+                    @include FontSize(14);
+                    color: $mine-shaft;
+                    transition: all 0.2s linear;
+                    &:hover {
+                      color: $green-main;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .sc_adminNav {
+    position: fixed;
+    left: 0;
+    z-index: 99;
+    top: 100px;
+    bottom: 0;
+    .AdminNavigation {
+      // background-color: #fff;
+      height: 100%;
+      margin: 0 70px;
+      .listMenuAdmin {
+        display: flex;
+        flex-direction: column;
+        // align-items: ;
+
+        .itemAdmin {
+          margin: 10px 0;
+          display: flex;
+          align-items: flex-start;
+          cursor: pointer;
+
+          &:first-child {
+            margin-top: 0;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .boxItem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include WidthHeight(40px, 40px);
+            color: #77777a;
+            transition: all 0.2s ease-in;
+
+            &.active {
+              background-color: $green-main;
+              color: $black-admin;
+              @include BorderRadius(50%);
+            }
+
+            &:hover {
+              background-color: $green-main;
+              color: $black-admin;
+              @include BorderRadius(46px);
+              width: 160px;
+              justify-content: space-between;
+              padding: 0 12px;
+
+              .ic_navigation {
+                // margin-right: 40px;
+              }
+              .text_navigation {
+                display: block;
+                font-weight: bold;
+              }
+            }
+
+            .ic_navigation {
+              @include WidthHeight(22px, 22px);
+            }
+            .text_navigation {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .sc_main {
+    margin: 100px 32px 50px 210px;
+  }
+}

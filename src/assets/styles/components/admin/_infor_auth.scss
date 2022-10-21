@@ -1,0 +1,143 @@
+#AuthAccountInfor {
+  .boxImageAuth {
+    // max-width: 100%;
+    // width: 90%;
+    // margin: 0 auto;
+
+    .boxImageInit {
+      @include WidthHeight(100%, 350px);
+      @include BorderRadius(26px);
+      border: 4px dashed $white-admin;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+
+      .ic_image {
+        @include WidthHeight(60px, auto);
+        color: $white-admin;
+      }
+
+      .imageShow {
+        @include WidthHeight(auto, 100%);
+        @include ObjectFit(contain);
+        cursor: pointer;
+      }
+
+      .img-magnifier-glass {
+        display: none;
+        position: absolute;
+        border: 3px solid $white-admin;
+        border-radius: 50%;
+        cursor: none;
+        width: 150px;
+        height: 150px;
+      }
+
+      .swiper__custom {
+        @include WidthHeight(100%, 100%);
+
+        .swiper-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .swiper-button-custom {
+          @include FontSize(26);
+          color: $white-admin;
+          font-weight: 700;
+          @include WidthHeight(42px, 42px);
+          @include BorderRadius(50%);
+          transition: all 0.2s linear;
+
+          &:hover {
+            background-color: rgba(34, 34, 44);
+            color: $black-admin;
+          }
+        }
+
+        .swiper-button-next {
+          @extend .swiper-button-custom;
+
+          &:after {
+            @include FontSize(18);
+          }
+        }
+        .swiper-button-prev {
+          @extend .swiper-button-custom;
+
+          &:after {
+            @include FontSize(18);
+          }
+        }
+      }
+    }
+  }
+
+  .boxInforAccount {
+    margin-top: 40px;
+
+    .title_main {
+      font-weight: 600;
+      @include FontSize(16);
+    }
+
+    .formInforAccount {
+      margin-top: 30px;
+
+      .boxform {
+        padding: 10px 30px;
+        @include BorderRadius(46px);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+        .inputForm {
+          background: transparent;
+          border: none;
+          outline: none;
+          width: 100%;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .boxHandleAuth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+    button {
+      @include BorderRadius(46px);
+      padding: 10px 30px;
+      font-weight: 500;
+      transition: all 0.2s;
+      outline: none;
+      border: none;
+
+      &:hover {
+        box-shadow: 0 0 10px #fff;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+    .successfully {
+      margin-right: 30px;
+      background-color: $green-light;
+      color: #fff;
+    }
+    .cancelation {
+      background-color: $orange-dark;
+      color: #fff;
+    }
+  }
+}

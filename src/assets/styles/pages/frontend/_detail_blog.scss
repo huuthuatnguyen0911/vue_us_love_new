@@ -1,0 +1,320 @@
+.DetailBlog {
+  .headerBlog {
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    position: relative;
+
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      .ic_back {
+        @include WidthHeight(26px, 26px);
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          color: $green-main;
+        }
+      }
+    }
+    .boxTitle {
+      text-align: center;
+      max-width: 100%;
+      width: 50%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .textTitle {
+        @include FontSize(24);
+        font-weight: bold;
+        line-height: 1.4;
+        color: $green-main;
+      }
+
+      .text_author {
+        @include FontSize(16);
+        margin-top: 16px;
+        color: rgba(51, 51, 51, 0.8);
+
+        .name {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .contentBlog {
+    margin-top: 40px;
+
+    .boxMainImage {
+      @include WidthHeight(100%, 300px);
+
+      .imgMainBlog {
+        @include WidthHeight(100%, 100%);
+        @include BorderRadius(16px);
+        @include ObjectFit(cover);
+      }
+    }
+    .boxContentMain {
+      margin-top: 20px;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      p {
+        @include FontSize(16);
+      }
+      img {
+        width: 400px;
+        max-height: 200px;
+        margin: 20px 0;
+        @include BorderRadius(16px);
+        @include ObjectFit(cover);
+      }
+    }
+  }
+
+  .boxFooterBlog {
+    margin-top: 30px;
+    .boxHr {
+      max-width: 100%;
+      width: 50%;
+      margin: 0 auto;
+    }
+    .boxListTag {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      .nameTag {
+        @include FontSize(16);
+        color: #bdbdbd;
+        display: inline-block;
+        margin-right: 15px;
+      }
+      .listTags {
+        display: flex;
+        align-items: center;
+
+        .itemTag {
+          @include BorderRadius(16px);
+          background-color: $bg-main-30;
+          padding: 10px 12px;
+          margin: 0 3px;
+          &:first-child {
+            margin-left: 0;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          a {
+            color: unset;
+          }
+
+          &:hover {
+            .titleTag {
+              color: $green-main;
+            }
+          }
+
+          .titleTag {
+            @include FontSize(14);
+            font-weight: 500;
+            transition: all 0.2s linear;
+          }
+        }
+      }
+    }
+
+    .boxComment {
+      margin-top: 30px;
+      .titleBox {
+        @include FontSize(18);
+        font-weight: bold;
+      }
+      .formComment {
+        margin-top: 20px;
+        position: relative;
+        .formGroup {
+          .txtComment {
+            @include WidthHeight(100%, 150px);
+            resize: none;
+            background-color: $bg-main-30;
+            @include BorderRadius(16px);
+            border: none;
+            outline: none;
+            padding: 16px 12px;
+          }
+        }
+        .boxBtnSend {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+
+          .ic_sendComment {
+            @include WidthHeight(24px, 24px);
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+              color: $green-main;
+            }
+          }
+        }
+      }
+
+      .boxListComment {
+        margin-top: 40px;
+
+        .listComments {
+          .itemComment {
+            margin-bottom: 20px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .boxItemComment {
+              display: flex;
+              align-items: flex-start;
+
+              .imageUserComment {
+                @include WidthHeight(35px, 35px);
+                @include ObjectFit(cover);
+                margin-right: 20px;
+                @include BorderRadius(50%);
+              }
+              .boxContentCommentUser {
+                background-color: $bg-main-30;
+                @include BorderRadius(16px);
+                padding: 14px;
+                width: 100%;
+
+                .boxNameUser {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 10px;
+
+                  .textNameUser {
+                    font-weight: bold;
+                    @include FontSize(17);
+                    margin-right: 12px;
+                  }
+                  .dateComment {
+                    color: rgba(51, 51, 51, 0.7);
+                    @include FontSize(14);
+                  }
+                }
+
+                .content {
+                  @include FontSize(16);
+                  // margin-bottom: 10px;
+                }
+
+                .boxHandleComment {
+                  display: flex;
+                  align-items: center;
+
+                  .handlerComment {
+                    margin-right: 10px;
+                    &:last-child {
+                      margin-right: 0;
+                    }
+                    .ic_handle {
+                      @include WidthHeight(16px, 16px);
+                      margin-right: 4px;
+                      transition: all 0.2s linear;
+                      cursor: pointer;
+
+                      &.active {
+                        color: $green-main;
+                      }
+
+                      &:hover {
+                        color: $green-main;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .boxItemChildrenComment {
+              display: flex;
+              align-items: flex-start;
+              margin-top: 20px;
+              margin-left: 56px;
+
+              .imageUserComment {
+                @include WidthHeight(35px, 35px);
+                @include ObjectFit(cover);
+                margin-right: 20px;
+                @include BorderRadius(50%);
+              }
+              .boxContentCommentUser {
+                background-color: $bg-main-30;
+                @include BorderRadius(16px);
+                padding: 14px;
+                width: 100%;
+
+                .boxNameUser {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 10px;
+
+                  .textNameUser {
+                    font-weight: bold;
+                    @include FontSize(17);
+                    margin-right: 12px;
+                  }
+                  .dateComment {
+                    color: rgba(51, 51, 51, 0.7);
+                    @include FontSize(14);
+                  }
+                }
+
+                .content {
+                  @include FontSize(16);
+                  // margin-bottom: 10px;
+                }
+
+                .boxHandleComment {
+                  display: flex;
+                  align-items: center;
+
+                  .handlerComment {
+                    margin-right: 10px;
+                    &:last-child {
+                      margin-right: 0;
+                    }
+                    .ic_handle {
+                      @include WidthHeight(16px, 16px);
+                      margin-right: 4px;
+                      transition: all 0.2s linear;
+                      cursor: pointer;
+
+                      &.active {
+                        color: $green-main;
+                      }
+
+                      &:hover {
+                        color: $green-main;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

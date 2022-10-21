@@ -1,0 +1,101 @@
+.ItemBlog {
+  //   padding-top: 20px !important;
+  //   padding-bottom: 20px !important;
+
+  .boxImage {
+    overflow: hidden;
+    @include BorderRadius(16px);
+    @include WidthHeight(100%, 200px);
+
+    .imgBlog {
+      @include WidthHeight(100%, 100%);
+      object-fit: cover;
+      transition: all 0.2s linear;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  .boxInforBlog {
+    .textTitleBlog {
+      font-weight: bold;
+      @include FontSize(20);
+      margin-bottom: 24px;
+    }
+
+    .textCotentBlog {
+      @include FontSize(16px);
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .boxAuthor {
+      display: flex;
+      align-items: center;
+      .img__group {
+        @include WidthHeight(40px, 40px);
+        border-radius: 50%;
+        @include ObjectFit(cover);
+      }
+
+      .name__group {
+        font-weight: bold;
+        @include FontSize(15);
+        margin-left: 10px;
+        opacity: 0.6;
+        transition: all 0.2s linear;
+      }
+    }
+  }
+
+  .boxInnerButtnHandle {
+    .listBtnHandle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .itemBtn {
+        margin: 0 10px;
+        @include WidthHeight(48px, 48px);
+        @include BorderRadius(50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &.green {
+          background-color: $green-light;
+        }
+
+        &.blue {
+          background-color: $blue;
+        }
+
+        &.violet {
+          background-color: $violet;
+        }
+
+        &.orange {
+          background-color: $orange-dark;
+        }
+
+        &:hover {
+          box-shadow: 0 0 10px 2px rgba(255, 255, 255);
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        .ic_handle {
+          @include WidthHeight(24px, 24px);
+        }
+      }
+    }
+  }
+}

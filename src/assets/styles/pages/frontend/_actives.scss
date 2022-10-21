@@ -1,0 +1,439 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+#ActivesPage {
+  /*
+    HEADER HOME START
+    */
+  #box__header__ac {
+    @include MaxWidth($width-tablet){
+      .align-items-center{
+        padding-top: 25px;
+        display: flex;
+        flex-wrap: initial;
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x));
+      }
+      }
+    
+    
+    .img__bird__header {
+      @include WidthHeight(100%, auto);
+      object-fit: contain;
+    }
+
+    .box__header__ac__inner__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .title {
+        @include FontSize(34);
+        font-family: "Lobster", cursive;
+        margin-bottom: 40px;
+
+        span {
+          color: #42c636;
+        }
+      }
+
+      .slogan {
+        color: rgba(51, 51, 51, 0.8);
+        margin-bottom: 40px;
+        line-height: 1.4;
+      }
+
+      .speech {
+        color: #333333;
+        font-weight: bold;
+        @include FontSize(20);
+        margin-bottom: 40px;
+      }
+
+      .btn__header__box {
+        background-color: #42c636;
+        @include BorderRadius(36px);
+        position: relative;
+        overflow: hidden;
+        @include WidthHeight(240px, 50px);
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        .icon__arrow__right {
+          position: absolute;
+          color: #fff;
+          top: 50%;
+          right: 20%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          z-index: 2;
+          transition: all 0.2s linear;
+          @include FontSize(22);
+        }
+
+        p {
+          color: #fff;
+          position: absolute;
+          z-index: 2;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          white-space: nowrap;
+          transition: all 0.2s linear;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #7af96f;
+          @include BorderRadius(36px);
+          top: 0;
+          right: 0;
+          z-index: 1;
+          transition: all 0.2s linear;
+        }
+
+        &:hover {
+          width: 260px;
+          .icon__arrow__right {
+            $rightFadeEnd: 0%;
+            animation: fade-in 0.3s linear forwards;
+          }
+          p {
+            left: 36%;
+          }
+          &::after {
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
+  /*
+    HEADER HOME END
+    */
+
+  /*
+    GAME BOX START
+    */
+  #ActivityGame {
+    .boxListImageGame {
+      .colInner {
+        padding: 20px;
+
+        .avt__game {
+          @include WidthHeight(100%, 220px);
+          @include ObjectFit(cover);
+          @include BorderRadius(16px);
+          margin-bottom: 20px;
+        }
+        .boxInforContent {
+          .titleGame {
+            @include FontSize(16);
+            font-weight: 700;
+            margin-bottom: 12px;
+          }
+          .description {
+            word-wrap: break-word;
+            @include FontSize(14);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            opacity: 0.8;
+          }
+          .textTopScore {
+            margin-bottom: 16px;
+            color: rgba(51, 51, 51, 0.7);
+            font-weight: 700;
+            @include FontSize(16);
+            .score {
+              color: #42c636;
+            }
+          }
+          .btnOnGame {
+            @include WidthHeight(124px, 36px);
+            border: none;
+            @include BorderRadius(36px);
+            background-color: #42c636;
+            color: #fff;
+            // font-weight: 700;
+            text-align: center;
+          }
+        }
+      }
+      @include MaxWidth($width-tablet){
+        .game__rps{
+          width: 50% !important;
+        }
+        .colInner {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  /*
+    GAME BOX END
+    */
+
+  #ActivityListAnimal {
+    .boxMainContent {
+      .boxHeaderMain {
+        margin-bottom: 20px;
+      }
+      .boxSlideShowAnimal {
+        .leftInner {
+          .swiper {
+            &.swiperCustom {
+              height: 380px;
+              .swiper-wrapper {
+                align-items: center;
+              }
+              .swiper-slide-active {
+                &.slideCustom {
+                  @include WidthHeight(136px !important, 136px !important);
+                }
+              }
+              .slideCustom {
+                cursor: pointer;
+                @include WidthHeight(116px, 116px !important);
+                // &.swiper-slide-active {
+                //   .boxInnerItemAnimal {
+                //     overflow: hidden;
+                //     .imgAnimal {
+                //       @include WidthHeight(100%, 100%);
+                //       @include ObjectFit(cover);
+                //     }
+                //   }
+                // }
+
+                .boxInnerItemAnimal {
+                  @include WidthHeight(100%, 100%);
+                  overflow: hidden;
+                  .imgAnimal {
+                    @include WidthHeight(100%, 100%);
+                    @include ObjectFit(cover);
+                    @include BorderRadius(20px);
+                  }
+                }
+              }
+
+              .swiper-button-custom {
+                top: 26px;
+                @include FontSize(20);
+                color: $mine-shaft;
+                font-weight: 700;
+                @include WidthHeight(42px, 42px);
+                background-color: transparent;
+                @include BorderRadius(50%);
+                transition: all 0.2s linear;
+
+                &:hover {
+                  background-color: rgba(206, 206, 206, 0.3);
+                }
+              }
+              .swiper-button-prev {
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                right: unset;
+                bottom: unset;
+                @extend .swiper-button-custom;
+
+                &:after {
+                  @include FontSize(18);
+                  color: #fff;
+                }
+              }
+              .swiper-button-next {
+                top: unset;
+                left: 50%;
+                transform: translateX(-50%);
+                right: unset;
+                bottom: 0 !important;
+                @extend .swiper-button-custom;
+
+                &:after {
+                  @include FontSize(18);
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+        .rightInner {
+          width: 100%;
+          margin-left: 30px;
+          .boxInnerInfor {
+            padding: 30px 24px;
+            .boxLeftInner {
+              .titleName {
+                font-weight: bold;
+                @include FontSize(18);
+                margin-bottom: 12px;
+              }
+              .description {
+                line-height: 1.4;
+                margin-bottom: 12px;
+              }
+              .inforAnimal {
+                margin-bottom: 6px;
+                line-height: 1.4;
+                span {
+                  font-weight: 600;
+                  color: #42c636;
+                }
+              }
+
+              .btnSeenInforAnimal {
+                margin-top: 20px;
+                .btnSeen {
+                  margin: 0 10px;
+                  @include WidthHeight(150px, 40px);
+                  @include BorderRadius(14px);
+                  transition: all 0.2s linear;
+                  &:hover {
+                    &.btnSeenClass {
+                      background-color: #42c636;
+                      color: #fff;
+                    }
+                    &.btnSeenDetail {
+                      background-color: #fff;
+                      color: #42c636;
+                    }
+                  }
+                  &:first-child {
+                    margin-left: 0;
+                  }
+                  &:last-child {
+                    margin-right: 0;
+                  }
+                  &.btnSeenClass {
+                    border: 2px solid #42c636;
+                  }
+                  &.btnSeenDetail {
+                    border: 2px solid white;
+                  }
+                }
+              }
+            }
+            .boxRightInner {
+              .imgMain {
+                @include WidthHeight(100%, 200px);
+                @include ObjectFit(cover);
+                overflow: hidden;
+                @include BorderRadius(20px);
+                margin-bottom: 16px;
+              }
+              .boxSlideImageAnimal {
+                .swiperCustomAnimal {
+                  .slideCustomAnimal {
+                    @include WidthHeight(80px !important, 80px !important);
+                    cursor: pointer;
+                    img {
+                      @include WidthHeight(100%, 100%);
+                      @include ObjectFit(cover);
+                      @include BorderRadius(12px);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @include MaxWidth($width-tablet){
+          .rightInner{
+            margin-left: 15px;
+            width: 75%;
+          }
+          .description {
+            display: none;
+          }
+          .btnSeenInforAnimal{
+            width: 300px;
+            display: flex;
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  #ActivityCanBeDone {
+    // margin: 40px 0;
+    @include MaxWidth($width-tablet){
+      .col-md-4 {
+        width: 50%;
+        max-width: 100%;
+      }
+      .col-md-8{
+        width: 50%;
+        max-width: 100%;
+      }
+    }
+    .boxInnerLeft {
+      .boxColCustom {
+        &:nth-child(2) {
+          margin-top: 20px;
+        }
+        &:nth-child(4) {
+          margin-top: 20px;
+        }
+        .boxCardCanDone {
+          @include WidthHeight(100%, 200px);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-blend-mode: darken;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          cursor: pointer;
+         
+          .textCard {
+            text-align: center;
+            @include FontSize(16);
+            line-height: 1.4;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .boxInnerRight {
+      padding: 30px 20px;
+      .header__title {
+        @include FontSize(18);
+        padding: 0 70px;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          width: 60px;
+          background-color: #42c636;
+        }
+      }
+      @include MaxWidth($width-tablet){
+        .header__title{
+          padding: 0px;
+          padding-left: 15px;
+          &::after{
+            top: 12px;
+            width: 16px;
+          }
+        }
+      }
+      .textDescription {
+        line-height: 1.4;
+      }
+    }
+  }
+
+}

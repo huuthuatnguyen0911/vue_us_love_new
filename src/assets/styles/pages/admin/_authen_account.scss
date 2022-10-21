@@ -1,0 +1,48 @@
+#AdminAuthAccount {
+  @import "../../components/admin/infor_auth";
+  @import "../../components/admin/table_confirm_auth";
+  .line {
+    max-width: 100%;
+    width: 60%;
+    margin: 30px auto;
+  }
+
+  .tabMainBox {
+    .listTab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .itemTab {
+        color: #fff;
+        padding: 12px 24px;
+        background-color: rgb(34, 34, 44);
+        font-weight: 600;
+        margin: 0 12px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+        @include BorderRadius(46px);
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:hover {
+          background-color: rgba(66, 198, 54, 0.3);
+          color: rgb(66, 198, 54);
+        }
+
+        &.active {
+          background-color: $green-main;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

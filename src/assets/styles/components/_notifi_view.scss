@@ -1,0 +1,72 @@
+.NotifiView {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+  z-index: 9999;
+
+  .listNotifications {
+    display: flex;
+    flex-direction: column;
+
+    .itemNotifi {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      margin-bottom: 24px;
+      @include BorderRadius(24px);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .ic_notifi {
+        color: #fff;
+        @include WidthHeight(28px, 28px);
+        padding: 8px;
+        @include BorderRadius(16px);
+        margin-right: 24px;
+      }
+
+      .textNotification {
+        color: #333;
+      }
+
+      &.success {
+        background-color: #eaf7ee;
+        .ic_notifi {
+          background-color: #3fbd61;
+        }
+      }
+
+      &.informational {
+        background-color: #e6effa;
+
+        .ic_notifi {
+          background-color: #016ce4;
+        }
+      }
+
+      &.warning {
+        background-color: #fef7ea;
+        .ic_notifi {
+          background-color: #ee9500;
+        }
+      }
+
+      &.destructive {
+        background-color: #fcede9;
+        .ic_notifi {
+          background-color: #ec4d2c;
+        }
+      }
+
+      &.admin {
+        box-shadow: 0 0 10px 2px #fff;
+        background-color: $white-admin;
+        .textNotification {
+          color: white;
+        }
+      }
+    }
+  }
+}

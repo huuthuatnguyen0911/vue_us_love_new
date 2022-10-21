@@ -1,0 +1,19 @@
+.boxMainBlogs {
+  // STYLE CHART BLOGS
+  @import "../../components/admin/_chart_blog.scss";
+
+  // STYPE NAVIGATION BLOGS
+  @import "../../components/admin/all_blog";
+
+  // STYPE MY BLOGS
+  @import "../../components/admin/my_blogg";
+
+  // STYPE CREATE BLOG
+  @import "../../components/admin/create_blog";
+
+  // STYPLE DRAFF BLOGS
+  @import "../../components/admin/draff_blog";
+
+  // STYPLE PUBLIC BLOGS
+  @import "../../components/admin/public_me_blog";
+}

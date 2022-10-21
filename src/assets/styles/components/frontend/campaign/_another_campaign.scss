@@ -1,0 +1,196 @@
+.ItemAnotherCampaign {
+  @include BorderRadius(16px);
+  overflow: hidden;
+  background-color: $bg-main-30;
+  height: 100%;
+
+  .boxImage {
+    @include WidthHeight(100%, 180px);
+    overflow: hidden;
+    position: relative;
+    &:hover {
+      .boxQuickView {
+        @include WidthHeight(100%, 100%);
+        .ic_eye {
+          @include WidthHeight(24px, 24px);
+        }
+      }
+
+      .imgCampaign {
+        transform: scale(1.2);
+      }
+    }
+
+    .imgCampaign {
+      @include WidthHeight(100%, 100%);
+      @include ObjectFit(cover);
+      transition: all 0.2s linear;
+    }
+
+    .boxQuickView {
+      @include WidthHeight(0, 0);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($color: #000, $alpha: 0.2);
+      transition: all 0.2s linear;
+
+      .ic_eye {
+        color: $green-main;
+        @include WidthHeight(0, 0);
+        cursor: pointer;
+        transition: all 0.2s linear;
+      }
+    }
+  }
+
+  .boxContentMain {
+    padding: 20px;
+
+    .titleCampaign {
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      transition: all 0.2s linear;
+      cursor: pointer;
+      color: #333;
+
+      &:hover {
+        color: $green-main;
+      }
+    }
+
+    .descCampaign {
+      @include FontSize(16);
+      color: rgba($color: #333, $alpha: 0.6);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .boxOrganizeShow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .boxLeft {
+        display: flex;
+        align-items: center;
+
+        .avatar {
+          @include WidthHeight(30px, 30px);
+          @include BorderRadius(50%);
+          @include ObjectFit(cover);
+          margin-right: 8px;
+        }
+
+        .name {
+          @include FontSize(14);
+          color: rgba($color: #333, $alpha: 0.8);
+        }
+      }
+
+      .boxRight {
+        .time {
+          @include FontSize(15);
+          padding: 8px;
+          background-color: rgb(66, 198, 54, 0.3);
+          color: $green-main;
+          @include BorderRadius(46px);
+          font-weight: 600;
+        }
+      }
+    }
+
+    .boxShowMember {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+
+      .name {
+        font-weight: 600;
+      }
+
+      .counter {
+        .counterCurrent {
+          @include FontSize(20);
+          color: $green-main;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .boxMainTimeline {
+      margin-top: 12px;
+
+      .money {
+        @include FontSize(14);
+        color: rgba($color: #333, $alpha: 0.6);
+
+        .currentMonney {
+          @include FontSize(20);
+          color: #333;
+          font-weight: 600;
+        }
+      }
+
+      .lineShow {
+        @include WidthHeight(100%, 6px);
+        @include BorderRadius(46px);
+        background-color: rgba(206, 206, 206, 0.8);
+        margin: 12px 0;
+        position: relative;
+
+        .lineInner {
+          position: absolute;
+          @include WidthHeight(80%, 6px);
+          background-color: $green-main;
+          @include BorderRadius(46px);
+          top: 0;
+          left: 0;
+          transition: all 0.2s linear;
+        }
+      }
+
+      .rowCounterCustom {
+        .boxContentInner {
+          .nameCounterText {
+            @include FontSize(12);
+            margin-bottom: 6px;
+          }
+
+          .numberText {
+            @include FontSize(14);
+            font-weight: 500;
+          }
+        }
+
+        .btnDonate {
+          border: 2px solid $green-main;
+          background: transparent;
+          @include FontSize(10);
+          @include BorderRadius(46px);
+          @include WidthHeight(100%, 34px);
+          font-weight: bold;
+          transition: all 0.2s linear;
+          color: $green-main;
+
+          &:hover {
+            background-color: rgb(66, 198, 54, 0.3);
+          }
+        }
+      }
+    }
+
+    .boxMainDonateMoney {
+      margin-top: 12px;
+      .textMain {
+        color: rgba($color: #333, $alpha: 0.8);
+      }
+    }
+  }
+}

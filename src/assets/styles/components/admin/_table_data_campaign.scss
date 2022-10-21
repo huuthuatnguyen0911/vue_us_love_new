@@ -1,0 +1,90 @@
+#CampaignTableDataView {
+  margin-top: 30px;
+
+  .boxHeaderMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .boxDropdown {
+      .slDropdown {
+        @include WidthHeight(100%, 42px);
+        background-color: $white-admin;
+        @include BorderRadius(16px);
+        padding: 0 10px;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+
+    .boxFilter {
+      display: flex;
+      align-items: center;
+
+      button {
+        border: none;
+        outline: none;
+        background-color: $white-admin;
+        @include BorderRadius(16px);
+        padding: 0 20px;
+        color: #fff;
+        transition: all 0.2s linear;
+        height: 42px;
+        font-weight: 600;
+      }
+
+      .searchFilterAuth {
+        border: none;
+        outline: none;
+        background-color: $white-admin;
+        @include BorderRadius(16px);
+        color: #fff;
+        transition: all 0.2s linear;
+        height: 42px;
+        font-weight: 600;
+        padding: 4px 20px;
+        width: 200px;
+        margin-right: 20px;
+        outline-color: $green-main;
+      }
+
+      .boxSortFilter {
+        margin-right: 20px;
+
+        .btnSort {
+          display: flex;
+          align-items: center;
+          width: 146px;
+
+          &:hover {
+            background-color: rgba(66, 198, 54, 0.3);
+            color: rgb(66, 198, 54);
+          }
+
+          .ic_sort {
+            margin-right: 10px;
+          }
+
+          p {
+            word-wrap: none;
+          }
+        }
+      }
+    }
+  }
+
+  .boxTableCampaign {
+    margin-top: 30px;
+    padding: 20px;
+    @include BorderRadius(16px);
+    background-color: $white-admin;
+
+    .boxLoadingData {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

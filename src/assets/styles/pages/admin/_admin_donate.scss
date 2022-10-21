@@ -1,0 +1,28 @@
+#boxAdminDonate {
+  .titlePage {
+    font-weight: 700;
+    @include FontSize(18);
+    margin-bottom: 40px;
+    color: $green-main;
+  }
+
+  .boxInnerContentMain {
+    margin-top: 50px;
+    padding: 20px;
+    @include BorderRadius(16px);
+    background-color: $white-admin;
+
+    .boxLoadingData {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nameTable {
+      margin-bottom: 20px;
+      font-weight: 600;
+      @include FontSize(18);
+      color: $green-main;
+    }
+  }
+}

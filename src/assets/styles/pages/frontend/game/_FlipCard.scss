@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap");
+
+.mainFlipCardGame {
+  background-color: black;
+  font-family: "Odibee Sans", cursive;
+  width: 100%;
+  #particles-js {
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: black;
+  }
+
+  #FlipCardMainScreen {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--light);
+    h1 {
+      font-size: 4.5rem;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: #42c636;
+    }
+    h3 {
+      @include FontSize(22);
+    }
+
+    .modeGame {
+      display: flex;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+      button {
+        width: 100px;
+        height: 100px;
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid white;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        margin: 0 1rem;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &.active {
+          background-color: white;
+          color: black;
+        }
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+        span:first-child {
+          font-size: 2rem;
+        }
+        span:last-child {
+          display: block;
+          font-size: 1.25rem;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    .boxInputUserName {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        @include FontSize(22);
+        color: white;
+        margin-bottom: 1rem;
+      }
+      .formInf__name__text {
+        width: 250px;
+        height: 35px;
+        outline: none;
+        padding: 5px;
+        padding: 0 12px;
+        @include BorderRadius(12px);
+        border: none;
+      }
+    }
+
+    .boxMainButton {
+      margin-top: 40px;
+      .btnGotoHome {
+        margin-top: 2rem;
+        @include WidthHeight(150px, 50px);
+        @include FontSize(22);
+        color: white;
+        border-radius: 15px;
+        border: 2px solid white;
+        background: none;
+        transition: 0.3s ease-in-out;
+        margin: 0 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+      .btnStartGame {
+        margin: 0 10px;
+        @include WidthHeight(150px, 50px);
+        @include FontSize(22);
+        color: white;
+        border-radius: 15px;
+        border: 2px solid #42c636;
+        background: none;
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background-color: #42c636;
+          color: black;
+        }
+        &:disabled {
+          border-color: rgba(65, 184, 131, 0.5);
+          color: rgba(243, 243, 243, 0.5);
+        }
+        &:disabled:hover {
+          background: none;
+          color: rgba(243, 243, 243, 0.5);
+        }
+      }
+    }
+  }
+
+  .screenInteract {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    color: var(--light);
+    .screen__inner {
+      /* width: 424px; */
+      display: flex;
+      flex-wrap: wrap;
+      margin: 2rem auto;
+    }
+
+    .boxInforScore {
+      position: fixed;
+      @include WidthHeight(300px, auto);
+      top: 10%;
+      left: 4%;
+      color: #fff;
+      .ScorceInforInner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .textTitleGame {
+          @include FontSize(26);
+          color: #42c636;
+          margin-bottom: 12px;
+        }
+        .blockSuccess {
+          @include FontSize(22);
+          .countBlock {
+          }
+          .totalBlock {
+          }
+        }
+        .number__countdown {
+          @include FontSize(22);
+        }
+      }
+    }
+  }
+
+  .card {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    /* width: 90px;
+    height: 120px; */
+    /* perpective */
+    .card__inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      position: relative;
+      &.is-flipped {
+        transform: rotateY(-180deg);
+      }
+      .card__face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.2);
+        &.card__face--front {
+          .card__content {
+            background: url("@/assets/images/game/flipcard/icon_back.png")
+              no-repeat center center;
+            /* background-size: 40px 40px; */
+            height: 100%;
+            width: 100%;
+            object-fit: color;
+          }
+        }
+        &.card__face--back {
+          background-color: var(--light);
+          transform: rotateY(-180deg);
+          .card__content {
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+    &.disabled {
+      .card__inner {
+        cursor: default;
+      }
+    }
+  }
+
+  #FilpcardResult {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1 {
+      color: #42c636;
+      @include FontSize(40);
+    }
+    h3 {
+      margin-top: 2.5rem;
+      @include FontSize(30);
+      span {
+        margin-left: 10px;
+        color: #42c636;
+      }
+    }
+
+    .boxMainButton {
+      margin-top: 40px;
+      .btnGotoHome {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid #42c636;
+        color: white;
+        padding: 1rem 1.4rem;
+        border-radius: 0.5rem;
+        @include FontSize(20);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin: 0 10px;
+        &:hover {
+          background-color: #42c636;
+          color: white;
+        }
+      }
+      .btnStartAgain {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid var(--light);
+        color: var(--light);
+        padding: 1rem 1.4rem;
+        border-radius: 0.5rem;
+        @include FontSize(20);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin: 0 10px;
+        &:hover {
+          background-color: var(--light);
+          color: black;
+        }
+      }
+    }
+  }
+}

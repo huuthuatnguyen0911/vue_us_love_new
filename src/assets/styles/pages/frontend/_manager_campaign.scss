@@ -1,0 +1,38 @@
+#ManagerCampaign {
+  .tilePage {
+    font-weight: 600;
+    @include FontSize(24);
+    margin-bottom: 30px;
+  }
+
+  .listTab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .itemTab {
+      margin-right: 12px;
+      background-color: rgba(206, 206, 206, 0.3);
+      @include FontSize(16);
+      padding: 10px 14px;
+      @include BorderRadius(46px);
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.active {
+        background-color: $green-main;
+        color: #fff;
+      }
+    }
+  }
+
+  .listShowAnimal {
+    .itemAnimal {
+      margin-bottom: 24px;
+    }
+  }
+}

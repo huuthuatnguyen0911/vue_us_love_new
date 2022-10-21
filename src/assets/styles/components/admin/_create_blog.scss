@@ -1,0 +1,147 @@
+.CreateBlog {
+  .boxHandleBlog {
+    margin-bottom: 30px;
+    .listHandle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .itemhandle {
+        margin-right: 20px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+        .boxBtnHandle {
+          display: flex;
+          align-items: center;
+          padding: 16px 14px;
+          transition: all 0.2s linear;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgba(66, 198, 54, 0.2);
+            color: $green-main;
+          }
+
+          &.btnPost {
+            background-color: $green-light;
+            color: white;
+            &.disabled {
+              opacity: 0.5;
+              &:hover {
+                box-shadow: unset;
+              }
+            }
+            &:hover {
+              box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.4);
+            }
+          }
+
+          .ic_handle {
+            @include WidthHeight(18px, 18px);
+            margin-right: 12px;
+          }
+          .textHandle {
+            @include FontSize(16px);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .formCreateBog {
+    .formMain {
+      .boxform {
+        padding: 14px 30px;
+        @include BorderRadius(46px);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .inputForm {
+          background: transparent;
+          border: none;
+          outline: none;
+          width: 100%;
+          color: white;
+        }
+
+        .listCategoryUl {
+          display: flex;
+          align-items: center;
+          margin-right: 10px;
+          .itemCategory {
+            display: flex;
+            align-items: center;
+            @include BorderRadius(46px);
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 8px 14px;
+            margin-right: 8px;
+            justify-content: space-between;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            .textCategory {
+              display: inline;
+              // overflow: hidden;
+              white-space: nowrap;
+              @include FontSize(14);
+              margin-right: 4px;
+            }
+            .ic_category {
+              @include WidthHeight(12px, 12px);
+              cursor: pointer;
+              transition: all 0.2s linear;
+
+              &:hover {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+
+      .boxBtnAddAvt {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .btnAddImage {
+          margin-right: 20px;
+          padding: 20px 30px;
+          @include BorderRadius(46px);
+          cursor: pointer;
+          &:hover {
+            .text {
+              color: $green-main;
+            }
+          }
+          .text {
+            transition: all 0.2s linear;
+          }
+          .inputAvtBlog {
+            display: none;
+          }
+          .showEntry {
+          }
+        }
+        .imgAvt {
+          @include BorderRadius(16px);
+          @include WidthHeight(200px, 126px);
+          @include ObjectFit(cover);
+        }
+      }
+
+      .boxEditor {
+        // height: ;
+      }
+    }
+  }
+}

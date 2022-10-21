@@ -1,0 +1,118 @@
+.MeMainBox {
+  .headerMe {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .boxAvatar {
+      margin-right: 30px;
+      position: relative;
+
+      .imgAvatar {
+        @include WidthHeight(178px, 178px);
+        @include BorderRadius(50%);
+        overflow: hidden;
+        @include ObjectFit(cover);
+        padding: 12px;
+        background-color: $bg-main-30;
+      }
+      .ic_camera {
+        opacity: 0.7;
+        @include BorderRadius(50%);
+        padding: 10px;
+        position: absolute;
+        background-color: #fff;
+        bottom: 0;
+        left: 50%;
+        cursor: pointer;
+        transition: all 0.2s;
+        transform: translateX(-50%);
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .boxStatistical {
+      .listStatistical {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .itemStatistical {
+          margin-right: 20px;
+
+          .colItemInne {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+
+            .boxInforLeft {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              margin-right: 12px;
+
+              .countNumber {
+                font-weight: bold;
+                @include FontSize(24);
+                margin-bottom: 12px;
+              }
+
+              .nameStatistics {
+                @include FontSize(16);
+                font-weight: 500;
+              }
+            }
+
+            .boxInforRight {
+              .ic_statistic {
+                @include WidthHeight(40px, 40px);
+                &.orange {
+                  color: $orange-dark;
+                }
+                &.violet {
+                  color: $violet;
+                }
+
+                &.blue {
+                  color: $blue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .boxTabMe {
+    .listTab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+
+      .itemTab {
+        margin-right: 12px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .boxInnerTab {
+          background-color: $bg-main-30;
+          @include FontSize(16);
+          padding: 12px 14px;
+          @include BorderRadius(46px);
+          cursor: pointer;
+
+          &.active {
+            background-color: $green-main;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+#ActivityPopupClassAnimal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  .boxPopupInner {
+    padding: 30px 30px;
+    @include BorderRadius(16px);
+    background-color: #546166;
+    position: relative;
+    width: 1300px;
+
+    .boxLeft {
+      .header__title {
+        color: white;
+      }
+      .boxInforAnimal {
+        margin-left: 100px;
+        margin-bottom: 40px;
+        .titleName {
+          font-weight: bold;
+          @include FontSize(24);
+          margin-bottom: 20px;
+          color: #42c636;
+        }
+        .description {
+          line-height: 1.4;
+          margin-bottom: 20px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+        .inforAnimal {
+          margin-bottom: 6px;
+          line-height: 1.4;
+          color: white;
+          span {
+            font-weight: 600;
+            color: #42c636;
+          }
+        }
+      }
+
+      .boxListAnimalClass {
+        width: 600px;
+        .swiperCustomClass {
+          .slideCustomAnimalClass {
+            .animalCardBox {
+              .leftCardAnimal {
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                .boxMainShape {
+                  transform: rotate(-18deg) translateY(-10px);
+                  .shape {
+                    @include WidthHeight(54px, 54px);
+                    border-radius: 10px 0 0 0;
+                    background: linear-gradient(
+                      145deg,
+                      rgba(255, 255, 255, 0.5) 0%,
+                      rgba(255, 255, 255, 0.09) 50%,
+                      rgba(255, 255, 255, 0.03) 70%,
+                      rgba(255, 255, 255, 0.007) 80%,
+                      rgba(255, 255, 255, 0) 100%
+                    );
+                    clip-path: polygon(0 0, 100% 0, 0 100%);
+                  }
+                }
+              }
+              .rightCardAnimal {
+                @include WidthHeight(142px, 246px);
+                position: relative;
+                img {
+                  top: 26px;
+                  left: -50px;
+                  position: absolute;
+                  @include WidthHeight(162px, 266px);
+                  @include ObjectFit(contain);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .boxRight {
+      .boxRightInner {
+        position: relative;
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   @include WidthHeight(100px, 280px);
+        //   background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
+        //   filter: blur(70px);
+        //   transform: translate(-50%, -50%)
+        //     matrix(-0.96, -0.26, 0.29, -0.96, 0, 0);
+        //   left: 50%;
+        //   top: 50%;
+        //   z-index: -1;
+        // }
+        // .bgOverlay {
+        // }
+        .mainImagAnimal {
+          @include WidthHeight(376px, 464px);
+          object-fit: contain;
+          z-index: 22;
+        }
+      }
+    }
+  }
+}

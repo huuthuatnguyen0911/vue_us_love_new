@@ -1,0 +1,81 @@
+#AdminCampaignView {
+  .sc_statistical {
+    .boxStatisInner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .boxInforLeft {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .countNumber {
+          font-weight: bold;
+          @include FontSize(26);
+          margin-bottom: 12px;
+        }
+
+        .nameStatistics {
+          @include FontSize(16);
+          font-weight: 500;
+        }
+      }
+      .boxInforRight {
+        .ic_statistic {
+          @include WidthHeight(36px, 36px);
+          &.orange {
+            color: $orange-dark;
+          }
+          &.violet {
+            color: $violet;
+          }
+
+          &.blue {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+
+  .sc_tabManagerCampaign {
+    margin-top: 50px;
+    .listTab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .itemTab {
+        color: #fff;
+        padding: 12px 24px;
+        background-color: rgb(34, 34, 44);
+        font-weight: 600;
+        margin: 0 12px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+        @include BorderRadius(46px);
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:hover {
+          background-color: rgba(66, 198, 54, 0.3);
+          color: rgb(66, 198, 54);
+        }
+
+        &.active {
+          background-color: $green-main;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    @import "../../components/admin/table_data_campaign";
+  }
+}

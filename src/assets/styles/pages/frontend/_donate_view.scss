@@ -1,0 +1,342 @@
+#DonateView {
+  @include WidthHeight(100%, 100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .boxContentDonate {
+    background-color: $bg-main-30;
+    @include BorderRadius(16px);
+    @include WidthHeight(100%, auto);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.4);
+
+    .col-custom {
+      &-left {
+        width: 500px;
+      }
+      &-right {
+        flex: 1;
+      }
+    }
+
+    .boxImage {
+      @include WidthHeight(100%, 100%);
+      overflow: hidden;
+      position: relative;
+
+      .imgCampaign {
+        @include WidthHeight(100%, 100%);
+        @include ObjectFit(cover);
+      }
+
+      .boxMainOverlay {
+        position: absolute;
+        @include WidthHeight(100%, 100%);
+        background-color: rgba($color: #000000, $alpha: 0.5);
+
+        .listTabBox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+
+          .itemTab {
+            @include BorderRadius(46px);
+            padding: 10px 12px;
+            font-weight: 600;
+            cursor: pointer;
+            color: rgba($color: #fff, $alpha: 0.8);
+
+            &.active {
+              background-color: rgb(66, 198, 54, 0.2);
+              color: $green-main;
+            }
+          }
+        }
+
+        .boxContentMain {
+          color: rgba(255, 255, 255);
+          margin: 30px 20px;
+          font-weight: 500;
+
+          .content {
+            line-height: 1.4;
+          }
+        }
+      }
+    }
+
+    .boxSuccessDonae {
+      @include WidthHeight(100%, 100%);
+      padding: 20px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .imageIconSucess {
+        @include WidthHeight(140px, auto);
+      }
+
+      .text {
+        font-weight: 600;
+        @include FontSize(20);
+        margin-top: 20px;
+      }
+
+      .btnBack {
+        outline: none;
+        border: none;
+        padding: 10px 14px;
+        font-weight: 500;
+        background-color: $green-main;
+        @include FontSize(17);
+        color: #fff;
+        margin-top: 20px;
+        @include BorderRadius(46px);
+        transition: all 0.2s linear;
+
+        &:hover {
+          box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.4);
+        }
+      }
+    }
+
+    .boxContentInput {
+      background-color: #fff;
+      @include WidthHeight(100%, 100%);
+      padding: 20px;
+
+      .titleText {
+        @include FontSize(24);
+        font-weight: bold;
+
+        .nameCampaign {
+          color: $green-main;
+        }
+      }
+
+      .boxCheckCampaign {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        .nameInput {
+          font-weight: 500;
+        }
+
+        .boxToggle {
+          @include WidthHeight(60px, 24px);
+          @include BorderRadius(46px);
+          position: relative;
+          overflow: hidden;
+          background-color: $bg-main-30;
+
+          .checkbox {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 3;
+
+            &:checked + .knobs:before {
+              content: "";
+              left: 36px;
+              background-color: $green-main;
+            }
+          }
+
+          .knobs {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 4px;
+              width: 20px;
+              height: 10px;
+              color: #fff;
+              font-size: 10px;
+              font-weight: bold;
+              text-align: center;
+              line-height: 1;
+              padding: 9px 4px;
+              background-color: #f44336;
+              border-radius: 50%;
+              transform: translateY(-50%);
+              transition: 0.3s ease all,
+                left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+            }
+          }
+
+          .layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #ebf7fc;
+            transition: 0.3s ease all;
+            z-index: -1;
+          }
+        }
+      }
+
+      .formDonateMain {
+        .formGroup {
+          margin-top: 12px;
+          .inputText {
+            @include WidthHeight(100%, 40px);
+            padding: 0 10px;
+            border: none;
+            background-color: #edf4fb;
+            @include BorderRadius(8px);
+            outline: none;
+
+            &:disabled {
+              opacity: 0.7;
+            }
+          }
+
+          .textMess {
+            @include WidthHeight(100%, 100px);
+            padding: 12px 10px;
+            border: none;
+            background-color: #edf4fb;
+            @include BorderRadius(8px);
+            outline: none;
+            resize: unset;
+          }
+        }
+      }
+
+      .boxMainInforDonate {
+        margin-top: 20px;
+
+        .listInfDonate {
+          .itemDonate {
+            padding: 14px 10px;
+            @include BorderRadius(10px);
+
+            &.active {
+              background-color: rgb(66, 198, 54, 0.2);
+              .name {
+                color: $green-main;
+
+                &::before {
+                  background-color: $green-main;
+                }
+              }
+            }
+
+            .name {
+              padding: 0 10px;
+              position: relative;
+              font-weight: 600;
+
+              &::before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 3px;
+                background-color: #edf4fb;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+              }
+            }
+          }
+        }
+
+        .boxShowInforDonate {
+          padding: 20px;
+          @include BorderRadius(10px);
+          background-color: #edf4fb;
+
+          .boxText {
+            margin-top: 20px;
+            &:first-child {
+              margin-top: 0;
+            }
+
+            .title_text {
+              @include FontSize(14);
+              color: rgba($color: #000000, $alpha: 0.6);
+              font-weight: 500;
+            }
+
+            .content_text {
+              margin-top: 8px;
+              font-weight: 700;
+
+              .ic_coppy {
+                color: rgba($color: #000000, $alpha: 0.6);
+                margin-left: 8px;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      .boxBtnHandleSubmit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+
+        .btnSuccessTransfers {
+          margin-right: 10px;
+          outline: none;
+          padding: 10px 12px;
+          border: none;
+          @include BorderRadius(10px);
+          background-color: $green-main;
+          transition: all 0.2s linear;
+          color: #fff;
+          font-weight: 500;
+
+          &:hover {
+            box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.4);
+          }
+        }
+
+        .btnCancel {
+          transition: all 0.2s linear;
+          cursor: pointer;
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+  @include MaxWidth($width-tablet){
+    .boxContentDonate{
+      margin-top: 50px;
+    }
+  }
+  .boxLoading {
+    max-width: 1024px;
+    @include WidthHeight(80%, 360px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-main-30;
+    @include BorderRadius(16px);
+  }
+}

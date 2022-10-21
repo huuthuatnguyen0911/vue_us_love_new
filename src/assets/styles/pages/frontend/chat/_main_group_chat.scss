@@ -1,0 +1,341 @@
+.MainGroupChat {
+  @include WidthHeight(100%, 100vh);
+
+  .boxMainChatInner {
+    @include WidthHeight(100%, 100%);
+    .boxFlexChat {
+      display: flex;
+      height: 100%;
+
+      .boxLeft {
+        width: 300px;
+        border-right: 1px solid rgba($color: #686868, $alpha: 0.2);
+        padding: 12px 16px;
+
+        .headerLogo {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .ic_back {
+            cursor: pointer;
+            transition: all 0.2s;
+            @include WidthHeight(22px, 22px);
+            &:hover {
+              color: $green-main;
+            }
+          }
+
+          .title_page {
+            @include FontSize(26);
+            font-weight: bold;
+            color: $green-main;
+          }
+        }
+
+        .formSearchGroupChat {
+          display: flex;
+          align-items: center;
+          margin: 20px 0 30px;
+          background-color: $bg-main-30;
+          @include BorderRadius(46px);
+          padding: 8px 14px;
+          color: rgba($color: #333, $alpha: 0.4);
+
+          .ic_search {
+            margin-right: 8px;
+          }
+
+          .inputSearch {
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: rgba($color: #333, $alpha: 0.8);
+            &::placeholder {
+              color: rgba($color: #333, $alpha: 0.4);
+            }
+          }
+        }
+
+        .boxListGroupChat {
+          overflow-y: auto;
+
+          .listGroupChat {
+            display: flex;
+            flex-direction: column;
+
+            .itemGroupChat {
+              cursor: pointer;
+              padding: 10px;
+              transition: all 0.2s;
+              @include BorderRadius(46px);
+
+              &:hover {
+                background-color: $bg-main-30;
+              }
+
+              &.active {
+                background-color: $green-main;
+                .boxItemInner {
+                  .imageAvatarGroup {
+                  }
+
+                  .boxRightInner {
+                    .nameGroup {
+                      color: #fff;
+                    }
+
+                    .textMessage {
+                      color: rgba(255, 255, 255, 0.8);
+                    }
+                  }
+                }
+              }
+
+              .boxItemInner {
+                display: flex;
+                align-items: center;
+
+                .imageAvatarGroup {
+                  @include WidthHeight(46px, 46px);
+                  @include BorderRadius(50%);
+                  overflow: hidden;
+                  margin-right: 12px;
+                }
+
+                .boxRightInner {
+                  display: flex;
+                  flex-direction: column;
+
+                  .nameGroup {
+                    @include FontSize(16);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  }
+
+                  .textMessage {
+                    @include FontSize(14px);
+                    color: rgba($color: #333, $alpha: 0.6);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .boxRight {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.ContentChat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .headerNameGroup {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(104, 104, 104, 0.2);
+
+    .boxInforGroup {
+      display: flex;
+      align-items: center;
+      .imageAvatarGroup {
+        @include WidthHeight(46px, 46px);
+        @include BorderRadius(50%);
+        overflow: hidden;
+        margin-right: 12px;
+      }
+
+      .boxRightInner {
+        display: flex;
+        flex-direction: column;
+
+        .nameGroup {
+          @include FontSize(16);
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+
+        .textMessage {
+          @include FontSize(14px);
+          color: rgba($color: #333, $alpha: 0.6);
+        }
+      }
+    }
+
+    .boxHandleGroup {
+      .listHandle {
+        display: flex;
+        align-items: center;
+
+        .itemHandle {
+          margin: 0 10px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+
+          .ic_handle {
+            @include WidthHeight(24px, 24px);
+            padding: 10px;
+            cursor: pointer;
+            color: $green-main;
+            @include BorderRadius(50%);
+            transition: all 0.2s;
+
+            &:hover {
+              background-color: $bg-main-30;
+            }
+          }
+        }
+      }
+    }
+  }
+  .contentGroupChat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column-reverse;
+
+    .listMessenger {
+      display: flex;
+      flex-direction: column;
+
+      .itemMessenger {
+        margin-bottom: 30px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &.me {
+          .boxInnerMessenger {
+            flex-direction: row-reverse;
+            .imageAvatar {
+              margin-right: 0;
+              margin-left: 10px;
+            }
+
+            .boxContent {
+              .nameSender {
+                display: none;
+              }
+              .content {
+                background-color: $green-main;
+                color: #fff;
+              }
+            }
+          }
+        }
+
+        .boxInnerMessenger {
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
+          .imageAvatar {
+            @include WidthHeight(36px, 36px);
+            @include BorderRadius(50%);
+            @include ObjectFit(cover);
+            margin-right: 10px;
+          }
+          .boxContent {
+            display: flex;
+            flex-direction: column;
+
+            .nameSender {
+              font-weight: bold;
+              margin-bottom: 8px;
+              @include FontSize(14);
+            }
+
+            .content {
+              background-color: $bg-main-30;
+              @include BorderRadius(46px);
+              padding: 10px 16px;
+              font-weight: 600;
+              color: rgba($color: #333, $alpha: 0.6);
+            }
+          }
+        }
+      }
+    }
+  }
+  .footerGroupChat {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+
+    .boxHandleSend {
+      margin-right: 10px;
+
+      .listHandleSend {
+        display: flex;
+        align-items: center;
+
+        .itemHandleSend {
+          // margin: 0 5px;
+
+          // &:first-child {
+          //   margin-left: 0;
+          // }
+          // &:last-child {
+          //   margin-right: 0;
+          // }
+
+          .ic_handle_send {
+            @include WidthHeight(20px, 20px);
+            padding: 10px;
+            cursor: pointer;
+            color: $green-main;
+            @include BorderRadius(50%);
+            transition: all 0.2s;
+
+            &:hover {
+              background-color: $bg-main-30;
+            }
+          }
+        }
+      }
+    }
+
+    .boxSendChat {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      background-color: $bg-main-30;
+      @include BorderRadius(46px);
+      padding: 2px 16px;
+
+      .inputContentChat {
+        width: 100%;
+        outline: none;
+        background-color: transparent;
+        border: none;
+      }
+
+      .ic_send_chat {
+        @include WidthHeight(20px, 20px);
+        color: $green-main;
+        cursor: pointer;
+        padding: 10px;
+        @include BorderRadius(50%);
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: $bg-main-30;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+#EventPage {
+  .titleText {
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+
+  .inputSearch {
+    @include BorderRadius(16px);
+    width: 190px;
+    padding: 10px 12px;
+    background: rgba(206, 206, 206, 0.3);
+    border: none;
+    outline: none;  
+  }
+}
+
+.sc_campaigns {
+  .boxHeaderCampaign {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+@include MaxWidth($width-tablet){
+  .col__respon__tablet{
+    width: 100% !important;
+  }
+}

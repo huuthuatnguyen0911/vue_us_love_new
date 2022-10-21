@@ -1,0 +1,257 @@
+.MeAuthenAccount {
+  overflow: hidden;
+  .title_text {
+    font-weight: bold;
+    @include FontSize(20);
+    margin-bottom: 20px;
+  }
+
+  .action_text {
+    font-weight: 600;
+    @include FontSize(16);
+    margin-bottom: 20px;
+  }
+
+  .listRules {
+    margin-bottom: 20px;
+    .itemRule {
+      margin-bottom: 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .ic_check_rule {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .boxUploadImage {
+    @include WidthHeight(100%, 250px);
+    margin-top: 30px;
+    padding: 30px 0;
+
+    .innerUpdateImage {
+      @include WidthHeight(100%, 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .boxSelect {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .ic_camera {
+          @include WidthHeight(24px, 24px);
+          margin-bottom: 10px;
+        }
+      }
+
+      .imageSelectSelfie {
+        @include WidthHeight(200px, 100%);
+        @include ObjectFit(contain);
+      }
+    }
+  }
+
+  .listNavigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+
+    .itemNavi {
+      padding: 10px 16px;
+      @include BorderRadius(36px);
+      cursor: pointer;
+
+      &.back {
+        background-color: $bg-main-30;
+
+        &.hiden {
+          visibility: hidden;
+        }
+      }
+
+      &.continue {
+        background-color: $green-main;
+        color: #fff;
+
+        &.disabled {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+.MeAuthenFace {
+  .boxExample {
+    .text_title_example {
+      @include FontSize(16);
+      margin-bottom: 20px;
+    }
+
+    .boxExampleContent {
+      .boxImageExample {
+        overflow: hidden;
+
+        .imagePepleExample {
+          @include WidthHeight(100%, auto);
+          @include ObjectFit(contain);
+          @include BorderRadius(16px);
+        }
+      }
+    }
+  }
+
+  .boxUploadImage {
+    @include WidthHeight(100%, 250px);
+    margin-top: 30px;
+    padding: 30px 0;
+
+    .innerUpdateImage {
+      @include WidthHeight(100%, 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .boxSelect {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .ic_camera {
+          @include WidthHeight(24px, 24px);
+          margin-bottom: 10px;
+        }
+      }
+
+      .imageSelectSelfie {
+        @include WidthHeight(200px, 100%);
+        @include ObjectFit(contain);
+      }
+    }
+  }
+}
+
+.MeAuthenIndentityCard {
+  .boxCardImage {
+    margin-bottom: 20px;
+
+    .boxCard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .boxImageEx {
+        @include WidthHeight(140px, 140px);
+        background-color: $bg-main-30;
+        @include BorderRadius(16px);
+        overflow: hidden;
+        padding: 10px;
+        position: relative;
+        margin-bottom: 8px;
+
+        .img_card {
+          position: absolute;
+          @include WidthHeight(120px, 120px);
+          @include BorderRadius(16px);
+          object-fit: contain;
+
+          &.case_1 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          &.case_2 {
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+          }
+
+          &.case_3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(2px);
+          }
+
+          &.case_4 {
+            filter: brightness(1.2);
+          }
+        }
+      }
+      .ic_check_good {
+        @include WidthHeight(20px, 20px);
+        color: $green-main;
+        margin-bottom: 8px;
+      }
+
+      .ic_check_error {
+        @include WidthHeight(20px, 20px);
+        color: red;
+        margin-bottom: 8px;
+      }
+
+      .text {
+        font-weight: bold;
+        @include FontSize(16);
+      }
+    }
+  }
+}
+
+.boxSuccesSendInfor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include BorderRadius(16px);
+  padding: 30px;
+  background-color: $bg-main-30;
+
+  .boxInnerSucess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .imageIconSucess {
+      @include WidthHeight(190px, auto);
+    }
+
+    .textTitle {
+      margin-top: 20px;
+      font-weight: bold;
+      @include FontSize(20);
+      margin-bottom: 20px;
+    }
+
+    .description {
+    }
+  }
+}
+
+.boxUnverifiedAccount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include BorderRadius(16px);
+  padding: 30px;
+  background-color: $bg-main-30;
+
+  .boxInner {
+    max-width: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+    }
+  }
+}

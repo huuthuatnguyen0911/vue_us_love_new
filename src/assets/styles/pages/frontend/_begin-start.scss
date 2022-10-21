@@ -1,0 +1,333 @@
+#beginStartView {
+  @include WidthHeight(100%, 100%);
+  #BeginVideo {
+    background-color: #000;
+    .video_begin {
+      min-width: 100%;
+      min-height: 100%;
+      position: fixed;
+      @include WidthHeight(100%, 100%);
+      // right: 0;
+      // bottom: 0;
+      z-index: -1;
+      object-fit: fill;
+      @include WidthHeight(100%, 100%);
+    }
+    .boxOverPlayOnVideo {
+      min-width: 100%;
+      min-height: 100%;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      transition: all 0.2s linear;
+      @include WidthHeight(100%, 100%);
+
+      &__inner {
+        position: relative;
+        @include WidthHeight(100%, 100%);
+
+        .boxShowContentMain {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          .boxBtnPlay {
+            position: relative;
+            cursor: pointer;
+
+            .btnPlay {
+              color: #42c636;
+              @include WidthHeight(24px, auto);
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            .overLayButtonPlay {
+              @include WidthHeight(60px, 60px);
+              @include BorderRadius(50%);
+              background-color: rgb(66, 198, 54, 0.4);
+              top: 50%;
+              left: 50%;
+            }
+          }
+        }
+
+        .boxBackPage {
+          position: absolute;
+          bottom: 30px;
+          left: 30px;
+          &__inner {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: #ffffff;
+            transition: all 0.2s linear;
+            cursor: pointer;
+
+            &:hover {
+              color: #42c636;
+            }
+            .ic_rotate_left_back {
+              margin-right: 6px;
+            }
+          }
+        }
+
+        .boxNextPage {
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          &__inner {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s linear;
+            &:hover {
+              color: #42c636;
+            }
+            .ic_arrow_right_skip {
+              margin-left: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #BeginFirst {
+    @include WidthHeight(100%, 100%);
+
+    .boxBeginMain__image {
+      min-width: 100%;
+      min-height: 100%;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      @include WidthHeight(100%, 100%);
+      display: flex;
+      flex-direction: row;
+      z-index: 1;
+
+      .videoSpace {
+        object-fit: fill;
+        @include WidthHeight(100%, 100%);
+      }
+
+      img {
+        @include WidthHeight(100%, 100%);
+        object-fit: cover;
+      }
+
+      .boxImageInner {
+        &.boxImageLeft {
+          width: 50%;
+          max-width: 100%;
+        }
+        &.boxImageRight {
+          width: 50%;
+          max-width: 100%;
+        }
+        img {
+          @include WidthHeight(100%, 100%);
+          object-fit: cover;
+        }
+      }
+    }
+    .boxOverlayMain {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      @include WidthHeight(100%, 100%);
+      .overlayInner {
+        @include WidthHeight(100%, 100%);
+        position: relative;
+
+        .boxLogo {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: 30px;
+          left: 30px;
+          .logo__image {
+            @include ObjectFit(cover);
+            @include WidthHeight(34px, 34px);
+          }
+
+          .logo__text {
+            margin-left: 10px;
+            color: $mine-shaft;
+            @include FontSize(22);
+
+            &--emphasize {
+              @include FontSize(22);
+              color: $camarone;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .boxShowContentMain {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          .boxContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .textContent {
+              font-weight: 700;
+              @include FontSize(30);
+              color: #ffffff;
+              margin-bottom: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              line-height: 1.4;
+              .textMessage {
+                color: #42c636;
+                @include FontSize(25);
+              }
+            }
+            .boxBtnPlay {
+              position: relative;
+              cursor: pointer;
+
+              .btnPlay {
+                color: #42c636;
+                @include WidthHeight(24px, auto);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              .overLayButtonPlay {
+                @include WidthHeight(60px, 60px);
+                @include BorderRadius(50%);
+                background-color: rgb(66, 198, 54, 0.4);
+                top: 50%;
+                left: 50%;
+              }
+            }
+          }
+        }
+
+        .boxNextPage {
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          &__inner {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s linear;
+            &:hover {
+              color: #42c636;
+            }
+            .ic_arrow_right_skip {
+              margin-left: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #BeginPromise {
+    position: relative;
+    #particles-js {
+      background: black;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      @include WidthHeight(100%, 100%);
+      .boxInner {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        .textThankyou {
+          @include FontSize(30);
+          color: #ffffff;
+          text-align: center;
+          line-height: 1.6;
+        }
+        .textPromise {
+          margin-top: 20px;
+          @include FontSize(20);
+          color: rgba(255, 255, 255, 0.8);
+          text-align: center;
+          line-height: 1.6;
+          max-width: 100%;
+          width: 80%;
+        }
+        .boxButton {
+          margin-top: 20px;
+          .btnLeft {
+            @include WidthHeight(120px, 45px);
+            @include BorderRadius(45px);
+            background-color: transparent;
+            border: 2px solid #42c636;
+            color: white;
+            transition: all 0.2s linear;
+            &:hover {
+              background-color: #42c636;
+              box-shadow: 0 0 20px 12px rgba(66, 198, 54, 0.5);
+            }
+          }
+        }
+      }
+      .boxBackPage {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        &__inner {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          color: #ffffff;
+          transition: all 0.2s linear;
+          cursor: pointer;
+
+          &:hover {
+            color: #42c636;
+          }
+          .ic_rotate_left_back {
+            margin-right: 6px;
+          }
+        }
+      }
+      .boxNextPage {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        &__inner {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          color: #ffffff;
+          cursor: pointer;
+          transition: all 0.2s linear;
+          &:hover {
+            color: #42c636;
+          }
+          .ic_arrow_right_skip {
+            margin-left: 6px;
+          }
+        }
+      }
+    }
+  }
+}
