@@ -22,7 +22,7 @@ const FrontendRouter = [
     path: "/animal/:slug_animal",
     name: "detail_animal",
     meta: {
-      title: "Chi tiết động vật",
+      title: "Chi tiết chiến dịch",
     },
     component: () => import("@/views/frontend/AnimalView"),
   },
@@ -30,7 +30,7 @@ const FrontendRouter = [
     path: "/donate/:slug_campaign",
     name: "donate_campaign",
     meta: {
-      title: "Quyên góp",
+      title: "Quyên góp - Ủng hộ chiến dịch",
     },
     component: () => import("@/views/frontend/DonateView"),
   },
