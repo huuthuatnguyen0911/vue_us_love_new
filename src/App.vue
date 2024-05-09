@@ -41,7 +41,7 @@ export default {
       if (this.getDataGroupChat) {
         const newArrayGroup = [];
         this.getDataGroupChat.forEach((element) => {
-          newArrayGroup.push(element.dataGroupChat[0]._id);
+          newArrayGroup.push(element.dataGroupChat[0]?._id);
         });
 
         this.$socket.emit("groupchat:join", newArrayGroup);

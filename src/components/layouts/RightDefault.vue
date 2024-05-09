@@ -71,9 +71,9 @@ export default {
       if (this.dataGroupChat) {
         const newArrayGroup = this.dataGroupChat.map((item) => {
           return {
-            id: item.dataGroupChat[0]._id,
-            name: item.dataGroupChat[0].Chat_name,
-            avatar: item.dataGroupChat[0].Chat_avatar,
+            id: item.dataGroupChat[0]?._id,
+            name: item.dataGroupChat[0]?.Chat_name,
+            avatar: item.dataGroupChat[0]?.Chat_avatar,
           };
         });
 

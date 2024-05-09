@@ -44,14 +44,14 @@
         <li class="itemInfor">
           <p class="name">Ảnh:</p>
           <img
-            :src="convert_image(dataCampaign.dataOrganization[0].CO_avatar)"
+            :src="convert_image(dataCampaign.dataOrganization[0]?.CO_avatar)"
             alt=""
             class="imgAvatar"
           />
         </li>
         <li class="itemInfor">
           <p class="name">Tổ chức:</p>
-          <p class="text">{{ dataCampaign.dataOrganization[0].CO_name }}</p>
+          <p class="text">{{ dataCampaign.dataOrganization[0]?.CO_name }}</p>
         </li>
         <li class="itemInfor">
           <p class="name">Liên kết:</p>

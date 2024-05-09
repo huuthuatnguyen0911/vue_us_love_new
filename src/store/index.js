@@ -527,7 +527,7 @@ export default createStore({
       if (checkUserLogin) {
         const dataGroupChat = await chatService.getAllGroupChat();
 
-        if (dataGroupChat.success) {
+        if (dataGroupChat?.success) {
           commit("setDataGroupChat", dataGroupChat.data);
         } else {
           commit("setDataGroupChat", null);

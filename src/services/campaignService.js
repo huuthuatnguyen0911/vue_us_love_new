@@ -103,6 +103,18 @@ const campaignService = {
       console.log("Error campaign: " + error);
     }
   },
+
+  async getBankNameByBankCode(bankCode) {
+    try {
+      const dataRef = await axios.get(
+        `/campaign/get-bank-by-bankcode/${bankCode}`
+      );
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error campaign: " + error);
+    }
+  },
 };
 
 export { campaignService, isPendingCampaign };

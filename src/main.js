@@ -11,7 +11,7 @@ import VueSocketIO from "vue-3-socket.io";
 import SocketIO from "socket.io-client";
 
 /**
- * COMPONENTs
+ * COMPONENT
  */
 import NotifiView from "@/components/base/NotifiView.vue";
 
@@ -40,8 +40,8 @@ import "animate.css";
 /**
  * CUSTOM AXIOS
  */
-// axios.defaults.baseURL = "http://localhost:3000/api";
-axios.defaults.baseURL = "https://node-love-us.onrender.com/api";
+axios.defaults.baseURL = "http://localhost:3000/api";
+// axios.defaults.baseURL = "https://node-love-us.onrender.com/api";
 // axios.defaults.baseURL = "https://api-love-us.herokuapp.com/api";
 authService.initAuthHeader();
 
@@ -49,8 +49,8 @@ authService.initAuthHeader();
  * SOCKET.IO
  */
 
-// const socketConnection = SocketIO("http://localhost:3000");
-const socketConnection = SocketIO("https://node-love-us.onrender.com/");
+const socketConnection = SocketIO("http://localhost:3000");
+// const socketConnection = SocketIO("https://node-love-us.onrender.com/");
 // const socketConnection = SocketIO("https://api-love-us.herokuapp.com/");
 
 createApp(App)

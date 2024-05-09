@@ -155,7 +155,7 @@
                     <div class="boxText">
                       <p class="title_text">Tên</p>
                       <p class="content_text">
-                        {{ currentInforDonate.name }}
+                        {{ dataInforDonateCampaign?.Donate_bank_name_account }}
                         <fa
                           :icon="['fas', 'clone']"
                           class="ic_coppy"
@@ -166,7 +166,9 @@
                     <div class="boxText">
                       <p class="title_text">Tài khoản</p>
                       <p class="content_text">
-                        {{ currentInforDonate.code }}
+                        {{
+                          dataInforDonateCampaign?.Donate_account_number_bank
+                        }}
                         <fa
                           :icon="['fas', 'clone']"
                           class="ic_coppy"
@@ -177,11 +179,11 @@
                     <div class="boxText">
                       <p class="title_text">Tên ngân hàng</p>
                       <p class="content_text">
-                        {{ currentInforDonate.name_bank }}
+                        {{ bankName }}
                         <fa
                           :icon="['fas', 'clone']"
                           class="ic_coppy"
-                          @click="onHandleCopy(currentInforDonate.name_bank)"
+                          @click="onHandleCopy(bankName)"
                         />
                       </p>
                     </div>
@@ -226,6 +228,8 @@ export default {
   },
   data() {
     return {
+      dataInforDonateCampaign: null,
+      bankName: "",
       dataInforCampaign: null,
       isShowInfor: "bank",
       currentInforDonate: null,
@@ -238,7 +242,7 @@ export default {
       listInforDonate: [
         {
           id: 0,
-          name: "NGUYEN THANH THIEN",
+          name: this.dataInforDonateCampaign?.Donate_bank_name_account,
           code: "106871804962",
           name_bank: "Viettinbank",
           form: "bank",
@@ -255,6 +259,10 @@ export default {
   },
   created() {
     this.intiDataMain();
+    this.getDataCampagin();
+    if (this.dataInforDonateCampaign?.Donate_bank_code) {
+      this.getBankName();
+    }
     this.onSelectInforDonate("bank");
   },
   methods: {
@@ -276,6 +284,33 @@ export default {
         this.isAnonymous = false;
       } else {
         this.isAnonymous = true;
+      }
+    },
+
+    async getDataCampagin() {
+      try {
+        const dataRef = await campaignService.getOneCampaign(
+          this.$route.query._id
+        );
+
+        if (dataRef) {
+          this.dataInforDonateCampaign = dataRef.data?.data_donate;
+        }
+      } catch (error) {
+        console.log("Loi donate : " + error.messenger);
+      }
+    },
+
+    async getBankName() {
+      try {
+        const bankCode = this.dataInforDonateCampaign?.Donate_bank_code;
+        const dataRef = await campaignService.getBankNameByBankCode(bankCode);
+
+        if (dataRef) {
+          this.bankName = dataRef.data?.vn_name;
+        }
+      } catch (error) {
+        console.log("Loi : " + error.messenger);
       }
     },
 
@@ -358,7 +393,13 @@ export default {
     convert_image: ConvertImage,
     convert_money: convertMoney,
   },
-  watch: {},
+  watch: {
+    "dataInforDonateCampaign.Donate_bank_code": function (newVal) {
+      if (newVal) {
+        this.getBankName();
+      }
+    },
+  },
 };
 </script>
 

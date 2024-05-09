@@ -31,12 +31,12 @@
         <div class="boxOrganizeShow">
           <div class="boxLeft">
             <img
-              :src="convert_image(dataCampaign.dataOrganization[0].CO_avatar)"
+              :src="convert_image(dataCampaign.dataOrganization[0]?.CO_avatar)"
               alt=""
               class="avatar"
             />
             <p class="name">
-              {{ sub_string(dataCampaign.dataOrganization[0].CO_name, 60) }}
+              {{ sub_string(dataCampaign.dataOrganization[0]?.CO_name, 60) }}
             </p>
           </div>
           <div class="boxRight">
