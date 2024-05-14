@@ -73,3 +73,10 @@ createApp(App)
   .mount("#app");
 
 import "bootstrap/dist/js/bootstrap.js";
+
+// Disconnect from MetaMask when the page is unloaded
+window.addEventListener("beforeunload", function () {
+  if (window.ethereum) {
+    window.ethereum.disconnect();
+  }
+});

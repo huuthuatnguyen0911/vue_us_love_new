@@ -50,9 +50,7 @@
               class="imageIconSucess"
             />
             <p class="text">Cảm ơn bạn đã quyên góp cho chiến dịch</p>
-            <button class="btnBack" @click="$router.push({ name: 'home' })">
-              Quay về
-            </button>
+            <button class="btnBack" @click="$router.go(-1)">Quay về</button>
           </div>
         </Transition>
         <Transition
@@ -194,7 +192,7 @@
 
             <div class="boxBtnHandleSubmit">
               <button class="btnSuccessTransfers" @click="onHandleSubmit">
-                Đã chuyển tiền
+                Quyên góp
               </button>
               <p class="btnCancel" @click="$router.go(-1)">Hủy bỏ</p>
             </div>
@@ -215,11 +213,17 @@
 </template>
 
 <script>
-import { campaignService, isPendingCampaign } from "@/services/campaignService";
+import {
+  campaignService,
+  isPendingCampaign,
+  contract,
+  currentUserAddress,
+} from "@/services/campaignService";
 import ConvertImage from "@/utils/convertImage";
 import convertMoney from "@/utils/convertMoney";
 import md5 from "md5";
 import { donateService } from "@/services/donateService";
+import { loginMetamask } from "@/services/web3";
 
 export default {
   name: "DonateView",
@@ -248,9 +252,9 @@ export default {
           form: "bank",
         },
         {
-          id: 0,
-          name: "NGUYEN THANH THIEN",
-          code: "0818133841",
+          id: 1,
+          name: "NGUYEN HUU THUAT",
+          code: "0358559461",
           name_bank: "MoMo",
           form: "momo",
         },
@@ -296,6 +300,10 @@ export default {
         if (dataRef) {
           this.dataInforDonateCampaign = dataRef.data?.data_donate;
         }
+        console.log(
+          "dataInforDonateCampaign",
+          this.dataInforDonateCampaign.Id_donate
+        );
       } catch (error) {
         console.log("Loi donate : " + error.messenger);
       }
@@ -371,6 +379,13 @@ export default {
     },
 
     async onHandleSubmit() {
+      // Check if the user has logged into MetaMask
+      const isLoggedIn = await loginMetamask();
+      if (!isLoggedIn) {
+        // alert("Please log in to MetaMask before donating.");
+        return;
+      }
+
       let dataNew = {};
       dataNew.idCampaignDonate = this.dataInforCampaign.dataDonate._id;
       dataNew.Donor_money = this.money;
@@ -382,6 +397,14 @@ export default {
           dataNew.Donor_sender = this.$store.state.dataUserCurrent._id;
         }
       }
+
+      const donateBlock = await contract.methods
+        .donateToCampaign(this.dataInforDonateCampaign.Id_donate, this.money)
+        .send({
+          from: currentUserAddress,
+        });
+
+      console.log("donateBlock", donateBlock);
 
       const dataRef = await donateService.createDonate(dataNew);
 
@@ -397,6 +420,14 @@ export default {
     "dataInforDonateCampaign.Donate_bank_code": function (newVal) {
       if (newVal) {
         this.getBankName();
+      }
+    },
+    // khi người dùng nhấn bank hoặc momo
+    isShowInfor: function (newVal) {
+      if (newVal == "bank") {
+        this.currentInforDonate = this.listInforDonate[0];
+      } else if (newVal == "momo") {
+        this.currentInforDonate = this.listInforDonate[1];
       }
     },
   },

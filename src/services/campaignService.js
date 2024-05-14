@@ -1,5 +1,21 @@
 import axios from "axios";
 import { ref } from "vue";
+import crowdFundingAbi from "../contracts/CrowdFunding.json";
+import Web3 from "web3";
+
+const web3 = new Web3(window.ethereum);
+
+const contract = new web3.eth.Contract(
+  crowdFundingAbi.abi,
+  process.env.VUE_APP_CROWD_FUNDING_ADDRESS
+);
+let accounts;
+let currentUserAddress;
+
+(async function () {
+  accounts = await web3.eth.getAccounts();
+  currentUserAddress = accounts[0];
+})();
 
 const isPendingCampaign = ref(null);
 
@@ -117,4 +133,4 @@ const campaignService = {
   },
 };
 
-export { campaignService, isPendingCampaign };
+export { campaignService, isPendingCampaign, contract, currentUserAddress };

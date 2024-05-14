@@ -10,7 +10,7 @@
           <p class="titleText">Các chiến dịch</p>
           <input
             type="text"
-            placeholder="vd: Nha Trang, Đà Nẵng"
+            placeholder="Địa điểm chiến dịch ..."
             class="inputSearch"
           />
         </div>
@@ -42,6 +42,7 @@
 import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
 import ItemAnotherCampaign from "@/components/frontend/campaign/ItemAnotherCampaign.vue";
 import { initPageService, isPending } from "@/services/initPageService";
+import { contract } from "@/services/campaignService";
 // import PopupCampaignVue from "@/components/frontend/campaign/PopupCampaign.vue";
 
 export default {
@@ -57,6 +58,7 @@ export default {
   data() {
     return {
       dataItemcampaign: null,
+      dataItemContract: null,
     };
   },
   created() {
@@ -68,6 +70,12 @@ export default {
       if (dataRef.success) {
         this.dataItemcampaign = dataRef.data.dataCampaigns;
       }
+      const dataContract = await contract.methods.getCampaigns().call();
+
+      if (dataContract) {
+        this.dataItemContract = dataContract;
+      }
+      console.log("dataContract", this.dataItemContract);
     },
   },
 };

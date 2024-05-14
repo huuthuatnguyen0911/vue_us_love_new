@@ -17,15 +17,15 @@
       <p class="title__group">Nhóm liên hệ</p>
       <ul class="list__group" v-if="check_user_login">
         <li class="item__group" v-for="item in listGroupChat" :key="item.id">
-          <router-link :to="{ name: 'home' }" class="item__link">
+          <!-- <router-link :to="{ name: 'home' }" class="item__link">
             <img :src="convert_image(item.avatar)" alt="" class="img__group" />
-            <p class="name__group">{{ sub_string(item.name, 30) }}</p>
+            <p class="name__group">{{ sub_string(item.name, 30) }}</p> -->
 
-            <!-- <div class="box__dots">
+          <!-- <div class="box__dots">
               <fa :icon="['fas', 'ellipsis-vertical']" class="icon__group" />
               <div class="list__"></div>
             </div> -->
-          </router-link>
+          <!-- </router-link> -->
         </li>
       </ul>
       <p class="show_text_group" v-else>Bạn chưa đăng nhập!</p>

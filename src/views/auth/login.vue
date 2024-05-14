@@ -196,6 +196,7 @@ import { authService, isPending } from "@/services/authService";
 import useVuelidate from "@vuelidate/core";
 import { email, helpers } from "@vuelidate/validators";
 import { mapActions } from "vuex";
+import { loginMetamask } from "@/services/web3";
 
 export default {
   name: "LoginPage",
@@ -245,6 +246,11 @@ export default {
             this.$router.push({ path: "/admin/blogs/all" });
           } else {
             this.$router.push({ name: "login" });
+          }
+          // Log in to MetaMask
+          const isMetamaskLoggedIn = await loginMetamask();
+          if (!isMetamaskLoggedIn) {
+            // alert("Please log in to MetaMask.");
           }
         } else {
           this.onShowNotifi({

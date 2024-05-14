@@ -90,7 +90,11 @@ import CampaignInforOrganize from "@/components/frontend/campaign/CampaignInforO
 import CampaignInforNew from "@/components/frontend/campaign/CampaignInforNew.vue";
 import CampaignConfirm from "@/components/frontend/campaign/CampaignConfirm.vue";
 import CampaignSucess from "@/components/frontend/campaign/CampaignSucess.vue";
-import { campaignService } from "@/services/campaignService";
+import {
+  campaignService,
+  contract,
+  currentUserAddress,
+} from "@/services/campaignService";
 
 export default {
   name: "CreateCampaign",
@@ -230,8 +234,25 @@ export default {
         "Donate_bank_name_account",
         this.dataMainCreateCampaign.dataDonate.Donate_bank_name_account
       );
+      console.log("dataMainCreateCampaign", this.dataMainCreateCampaign);
+      const campaignEndTime =
+        new Date(
+          this.dataMainCreateCampaign.dataCampaign.campaign_end_time
+        ).getTime() / 1000;
+      console.log("currentUserAddress", currentUserAddress);
+      const createData = await contract.methods
+        .createCampaign(
+          this.dataMainCreateCampaign.dataCampaign.campaign_name,
+          this.dataMainCreateCampaign.dataDonate.Donate_max_money,
+          campaignEndTime
+        )
+        .send({ from: currentUserAddress, gas: 3000000 });
 
       const dataRef = await campaignService.createCampaign(formData);
+
+      if (createData) {
+        console.log("createData", createData);
+      }
 
       if (dataRef.success) {
         this.currentComponent = "CampaignSucess";
