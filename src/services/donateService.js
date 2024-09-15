@@ -51,6 +51,29 @@ const donateService = {
       console.log("Error Blog: " + error);
     }
   },
+
+  async getExchangeRate() {
+    try {
+      const res = await axios.get(
+        "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=vnd"
+      );
+      return res.data.binancecoin.vnd;
+    } catch (error) {
+      console.error("Error getting exchange rate:", error);
+      return null;
+    }
+  },
+
+  // get data campain from smart contract
+  async getCampaignData(id_campaign) {
+    try {
+      const data = await contract.methods.campaigns(id_campaign).call();
+      return data;
+    } catch (error) {
+      console.error("Error getting campaign data:", error);
+      return null;
+    }
+  },
 };
 
 export { donateService, isPendingDonateNotConfirm };

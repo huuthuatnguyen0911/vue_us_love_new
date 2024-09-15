@@ -224,6 +224,7 @@ import convertMoney from "@/utils/convertMoney";
 import md5 from "md5";
 import { donateService } from "@/services/donateService";
 import { loginMetamask } from "@/services/web3";
+import Web3 from "web3";
 
 export default {
   name: "DonateView",
@@ -242,6 +243,8 @@ export default {
       endcode: null,
       messenger: "",
       isSuccessfully: false,
+      exChangeRate: null,
+      ownerCampaign: null,
       money: 0,
       listInforDonate: [
         {
@@ -263,24 +266,50 @@ export default {
   },
   created() {
     this.intiDataMain();
-    this.getDataCampagin();
-    if (this.dataInforDonateCampaign?.Donate_bank_code) {
-      this.getBankName();
-    }
     this.onSelectInforDonate("bank");
   },
   methods: {
     async intiDataMain() {
       try {
-        const dataRef = await campaignService.getInforDonateCampaign(
-          this.$route.query._id
+        // Get exchange rate
+        const rate = await donateService.getExchangeRate();
+        if (!rate) return;
+
+        this.exChangeRate = rate;
+
+        // Get campaign data
+        const bankCode = this.dataInforDonateCampaign?.Donate_bank_code;
+        const campaignId = this.$route.query._id;
+        const [dataRefId, dataRef, dataBankName] = await Promise.all([
+          campaignService.getOneCampaign(campaignId),
+          campaignService.getInforDonateCampaign(campaignId),
+          campaignService.getBankNameByBankCode(bankCode),
+        ]);
+
+        if (dataRefId) {
+          this.dataInforDonateCampaign = dataRefId.data?.data_donate;
+          console.log(
+            "dataInforDonateCampaign:",
+            this.dataInforDonateCampaign.Id_donate
+          );
+        }
+        const getAddressFromSM = await donateService.getCampaignData(
+          this.dataInforDonateCampaign.Id_donate
         );
+
+        if (getAddressFromSM) {
+          this.ownerCampaign = getAddressFromSM.owner;
+        }
 
         if (dataRef.success) {
           this.dataInforCampaign = dataRef.data[0];
         }
+
+        if (dataBankName) {
+          this.bankName = dataBankName.data?.vn_name;
+        }
       } catch (error) {
-        console.log("Loi donate : " + error.messenger);
+        console.error("Loi:", error.message);
       }
 
       // check login
@@ -288,37 +317,6 @@ export default {
         this.isAnonymous = false;
       } else {
         this.isAnonymous = true;
-      }
-    },
-
-    async getDataCampagin() {
-      try {
-        const dataRef = await campaignService.getOneCampaign(
-          this.$route.query._id
-        );
-
-        if (dataRef) {
-          this.dataInforDonateCampaign = dataRef.data?.data_donate;
-        }
-        console.log(
-          "dataInforDonateCampaign",
-          this.dataInforDonateCampaign.Id_donate
-        );
-      } catch (error) {
-        console.log("Loi donate : " + error.messenger);
-      }
-    },
-
-    async getBankName() {
-      try {
-        const bankCode = this.dataInforDonateCampaign?.Donate_bank_code;
-        const dataRef = await campaignService.getBankNameByBankCode(bankCode);
-
-        if (dataRef) {
-          this.bankName = dataRef.data?.vn_name;
-        }
-      } catch (error) {
-        console.log("Loi : " + error.messenger);
       }
     },
 
@@ -379,10 +377,8 @@ export default {
     },
 
     async onHandleSubmit() {
-      // Check if the user has logged into MetaMask
       const isLoggedIn = await loginMetamask();
       if (!isLoggedIn) {
-        // alert("Please log in to MetaMask before donating.");
         return;
       }
 
@@ -398,16 +394,23 @@ export default {
         }
       }
 
+      const web3 = new Web3();
       const donateBlock = await contract.methods
-        .donateToCampaign(this.dataInforDonateCampaign.Id_donate, this.money)
+        .donateToCampaign(this.dataInforDonateCampaign.Id_donate)
         .send({
           from: currentUserAddress,
+          to: this.ownerCampaign,
+          value: web3.utils.toWei(
+            (this.money / this.exChangeRate).toString(),
+            "ether"
+          ),
         });
 
-      console.log("donateBlock", donateBlock);
+      if (!donateBlock) {
+        console.log("Donate failed");
+      }
 
       const dataRef = await donateService.createDonate(dataNew);
-
       if (dataRef.success) {
         this.isSuccessfully = true;
       }
@@ -419,7 +422,7 @@ export default {
   watch: {
     "dataInforDonateCampaign.Donate_bank_code": function (newVal) {
       if (newVal) {
-        this.getBankName();
+        this.intiDataMain();
       }
     },
     // khi người dùng nhấn bank hoặc momo
